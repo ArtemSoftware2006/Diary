@@ -16,5 +16,10 @@ namespace Diary
         {
             InitializeComponent();
         }
+
+        private void button_newNote_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
