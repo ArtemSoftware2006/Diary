@@ -1,6 +1,6 @@
 ﻿namespace Diary
 {
-    partial class Form1
+    partial class Form_main
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -32,7 +32,7 @@
             this.button_newNote = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_close = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -77,29 +77,30 @@
             this.button3.Text = "Все записи";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // button_close
             // 
-            this.button4.Location = new System.Drawing.Point(166, 438);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(254, 58);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Выход";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_close.Location = new System.Drawing.Point(166, 438);
+            this.button_close.Name = "button_close";
+            this.button_close.Size = new System.Drawing.Size(254, 58);
+            this.button_close.TabIndex = 4;
+            this.button_close.Text = "Выход";
+            this.button_close.UseVisualStyleBackColor = true;
+            this.button_close.Click += new System.EventHandler(this.button_close_Click);
             // 
-            // Form1
+            // Form_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(607, 630);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button_close);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button_newNote);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Form1";
+            this.Name = "Form_main";
             this.Text = "Дневник";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -112,7 +113,7 @@
         private System.Windows.Forms.Button button_newNote;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_close;
     }
 }
 
