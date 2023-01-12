@@ -34,25 +34,5 @@ namespace Diary
         {
             this.Close();
         }
-
-        private void Form_main_Load(object sender, EventArgs e)
-        {
-            this.Close();
-            th = new Thread(EntranceShow);
-            th.SetApartmentState(ApartmentState.STA);
-            th.Start();
-
-
-           // Form_entrance fm = new Form_entrance();
-           // fm.Show();
-        }
-        private void EntranceShow()
-        {
-            Application.Run(new Form_entrance());
-        }
-        private void Form_main_Shown(object sender, EventArgs e)
-        {
-           // this.Hide();
-        }
     }
 }

@@ -102,8 +102,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form_main";
             this.Text = "Дневник";
-            this.Load += new System.EventHandler(this.Form_main_Load);
-            this.Shown += new System.EventHandler(this.Form_main_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
