@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Diary.Forms;
@@ -14,7 +15,7 @@ namespace Diary
 {
     public partial class Form_main : Form
     {
-        private bool IsHide;
+        Thread th;
         private string connectStr = "server=localhost;uid=root;pwd=1111;database=practic";
         public Form_main()
         {
@@ -36,13 +37,22 @@ namespace Diary
 
         private void Form_main_Load(object sender, EventArgs e)
         {
-            Form_entrance fm = new Form_entrance();
-            fm.Show();
-        }
+            this.Close();
+            th = new Thread(EntranceShow);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
 
+
+           // Form_entrance fm = new Form_entrance();
+           // fm.Show();
+        }
+        private void EntranceShow()
+        {
+            Application.Run(new Form_entrance());
+        }
         private void Form_main_Shown(object sender, EventArgs e)
         {
-            this.Hide();
+           // this.Hide();
         }
     }
 }
