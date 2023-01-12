@@ -61,6 +61,7 @@
             this.label_registr.Size = new System.Drawing.Size(74, 25);
             this.label_registr.TabIndex = 15;
             this.label_registr.Text = "Войти";
+            this.label_registr.Click += new System.EventHandler(this.label_registr_Click);
             // 
             // label_psw
             // 

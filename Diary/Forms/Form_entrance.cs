@@ -21,7 +21,7 @@ namespace Diary.Forms
         {
             Form_registr fm = new Form_registr();
             fm.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void label_registr_Enter(object sender, EventArgs e)
