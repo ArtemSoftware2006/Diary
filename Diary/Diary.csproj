@@ -84,7 +84,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBConnector.cs" />
+    <Compile Include="Forms\Form_entrance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_entrance.Designer.cs">
+      <DependentUpon>Form_entrance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_registr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_registr.Designer.cs">
+      <DependentUpon>Form_registr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SQL\DBConnector.cs" />
     <Compile Include="Forms\Form_addNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,8 +114,14 @@
     <EmbeddedResource Include="Forms\Form_addNote.resx">
       <DependentUpon>Form_addNote.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_entrance.resx">
+      <DependentUpon>Form_entrance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_main.resx">
       <DependentUpon>Form_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_registr.resx">
+      <DependentUpon>Form_registr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -128,8 +146,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SQL\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

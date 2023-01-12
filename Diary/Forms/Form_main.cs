@@ -14,6 +14,7 @@ namespace Diary
 {
     public partial class Form_main : Form
     {
+        private bool IsHide;
         private string connectStr = "server=localhost;uid=root;pwd=1111;database=practic";
         public Form_main()
         {
@@ -31,6 +32,17 @@ namespace Diary
         private void button_close_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Form_main_Load(object sender, EventArgs e)
+        {
+            Form_entrance fm = new Form_entrance();
+            fm.Show();
+        }
+
+        private void Form_main_Shown(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
