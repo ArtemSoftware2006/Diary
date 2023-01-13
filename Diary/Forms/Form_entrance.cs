@@ -20,6 +20,8 @@ namespace Diary.Forms
         private void label_registr_Click(object sender, EventArgs e)
         {
             Form_registr fm = new Form_registr();
+            fm.TopMost = true;
+            fm.Location = this.Location;
             fm.Show();
             this.Close();
         }
@@ -32,11 +34,6 @@ namespace Diary.Forms
         private void label_registr_Leave(object sender, EventArgs e)
         {
             this.label_registr.ForeColor = Color.Blue;
-        }
-
-        private void Form_entrance_Load(object sender, EventArgs e)
-        {
-           
         }
     }
 }

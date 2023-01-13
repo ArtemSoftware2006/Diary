@@ -20,6 +20,8 @@ namespace Diary.Forms
         private void label_registr_Click(object sender, EventArgs e)
         {
             Form_entrance fm = new Form_entrance();
+            fm.Location = this.Location;
+            fm.TopMost = true;
             fm.Show();
             this.Close();
         }
