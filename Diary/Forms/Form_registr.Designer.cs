@@ -110,6 +110,7 @@
             this.button_registr.TabIndex = 10;
             this.button_registr.Text = "Регистрация";
             this.button_registr.UseVisualStyleBackColor = true;
+            this.button_registr.Click += new System.EventHandler(this.button_registr_Click);
             // 
             // label_logo
             // 
@@ -162,6 +163,9 @@
             this.Name = "Form_registr";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Дневник Регистрация";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_registr_FormClosing);
+            this.MouseLeave += new System.EventHandler(this.Form_registr_MouseLeave);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_registr_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 

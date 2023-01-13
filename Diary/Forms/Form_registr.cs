@@ -20,10 +20,41 @@ namespace Diary.Forms
         private void label_registr_Click(object sender, EventArgs e)
         {
             Form_entrance fm = new Form_entrance();
-            fm.Location = this.Location;
             fm.TopMost = true;
-            fm.Show();
             this.Close();
+            if (this.IsDisposed)
+            {
+                fm.Show();
+            }
+        }
+
+        private void button_registr_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void Form_registr_MouseLeave(object sender, EventArgs e)
+        {
+            this.label_registr.ForeColor = Color.Red;
+        }
+
+        private void Form_registr_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.label_registr.ForeColor = Color.Blue;
+        }
+
+        private void Form_registr_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Если вы выйдете, то все данные удалятся!", "Вы хотите выйты?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Dispose();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

@@ -58,6 +58,7 @@
             this.button_entrance.TabIndex = 2;
             this.button_entrance.Text = "Войти";
             this.button_entrance.UseVisualStyleBackColor = true;
+            this.button_entrance.Click += new System.EventHandler(this.button_entrance_Click);
             // 
             // textBox_loginInput
             // 
@@ -106,8 +107,8 @@
             this.label_registr.TabIndex = 7;
             this.label_registr.Text = "Регистрация";
             this.label_registr.Click += new System.EventHandler(this.label_registr_Click);
-            this.label_registr.Enter += new System.EventHandler(this.label_registr_Enter);
-            this.label_registr.Leave += new System.EventHandler(this.label_registr_Leave);
+            this.label_registr.MouseLeave += new System.EventHandler(this.label_registr_MouseLeave);
+            this.label_registr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label_registr_MouseMove);
             // 
             // label5
             // 
@@ -137,6 +138,7 @@
             this.Name = "Form_entrance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Дневник Вход";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_entrance_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
