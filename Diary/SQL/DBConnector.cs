@@ -9,11 +9,8 @@ namespace Diary
 {
     static class DBConnector
     {
-        static private string _connectionStr;
-        static private MySqlConnection connect;
-
-        static public string ConnectStr { get; }
-        static public MySqlConnection Connection { get; }
+        static public string _connectionStr { get; private set; }
+        static public MySqlConnection connect { get; private set; }
 
 
         static public void CreateConction(string connectStr)

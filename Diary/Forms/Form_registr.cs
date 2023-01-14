@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Diary.SQL;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,9 @@ namespace Diary.Forms
 {
     public partial class Form_registr : Form
     {
+        private MySqlCommand cmd;
+        private MySqlDataReader reader;
+
         public Form_registr()
         {
             InitializeComponent();
@@ -30,7 +35,11 @@ namespace Diary.Forms
 
         private void button_registr_Click(object sender, EventArgs e)
         {
+            DBConnector.Open();
 
+
+
+            DBConnector.Close();
         }
 
 

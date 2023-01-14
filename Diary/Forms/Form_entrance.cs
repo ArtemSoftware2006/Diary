@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Diary.SQL;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +15,9 @@ namespace Diary.Forms
 {
     public partial class Form_entrance : Form
     {
+        private MySqlCommand cmd;
+        private SelectUser selUser;
+        private MySqlDataReader reader;
         public Form_entrance()
         {
             InitializeComponent();
@@ -29,8 +35,27 @@ namespace Diary.Forms
         }
         private void button_entrance_Click(object sender, EventArgs e)
         {
+            DBConnector.Open();
 
+            selUser = new SelectUser(textBox_loginInput.Text, textBox_pswInput.Text);
+            cmd = new MySqlCommand(selUser.SqlString, DBConnector.connect);
+
+            reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                this.Dispose();
+
+                Application.OpenForms[0].Enabled= true;
+            }
+            else
+            {
+                MessageBox.Show("Мы не нашли такого пользователя!", "Ошибка!");
+            }
+
+            DBConnector.Close();
         }
+
 
 
         private void label_registr_MouseMove(object sender, MouseEventArgs e)

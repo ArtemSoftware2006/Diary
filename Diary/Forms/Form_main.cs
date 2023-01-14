@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +15,8 @@ namespace Diary
 {
     public partial class Form_main : Form
     {
-        private string connectStr = "server=localhost;uid=root;pwd=1111;database=practic";
+        
+        private string connectStr = "server=localhost;uid=root;pwd=1111;database=Diary";
         public Form_main()
         {
             InitializeComponent();
@@ -36,7 +38,7 @@ namespace Diary
         {
             Form_entrance fm = new Form_entrance();
             fm.TopMost= true;
-            fm.ShowDialog();
+            fm.Show();
         }
     }
 }
