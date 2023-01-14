@@ -18,22 +18,12 @@ namespace Diary.Forms
         private MySqlDataReader reader;
         private SelectLogin selUser;
         private AddUser add;
-
+        private bool IsMainClose = true;
         public Form_registr()
         {
             InitializeComponent();
         }
 
-        private void label_registr_Click(object sender, EventArgs e)
-        {
-            Form_entrance fm = new Form_entrance();
-            fm.TopMost = true;
-            this.Close();
-            if (this.IsDisposed)
-            {
-                fm.Show();
-            }
-        }
 
         private void button_registr_Click(object sender, EventArgs e)
         {
@@ -62,8 +52,8 @@ namespace Diary.Forms
 
                         if (cmd.ExecuteNonQuery() == 1)
                         {
+                            Form_main.EnableMain();
                             this.Dispose();
-                            Application.OpenForms[0].Enabled = true;
                         }
                     }
                     catch (Exception)
@@ -91,16 +81,39 @@ namespace Diary.Forms
             this.label_registr.ForeColor = Color.Blue;
         }
 
+
+        private void label_registr_Click(object sender, EventArgs e)
+        {
+            Form_entrance fm = new Form_entrance();
+            fm.TopMost = true;
+
+            IsMainClose = false;
+            this.Close();
+
+            if (this.IsDisposed)
+            {
+                fm.Show();
+            }
+        }
+
         private void Form_registr_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Если вы выйдете, то все данные удалятся!", "Вы хотите выйты?", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (IsMainClose)
             {
                 this.Dispose();
+                Form_main.CloseMain();
             }
-            else if (dialogResult == DialogResult.No)
+            else
             {
-                e.Cancel = true;
+                DialogResult dialogResult = MessageBox.Show("Если вы выйдете, то все данные удалятся!", "Вы хотите выйты?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    this.Dispose();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
             }
         }
     }

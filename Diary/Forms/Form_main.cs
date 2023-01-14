@@ -23,6 +23,19 @@ namespace Diary
             DBConnector.CreateConction(connectStr);
         }
 
+
+
+        public static void CloseMain()
+        {
+            Application.Exit();
+        }
+        public static void EnableMain()
+        {
+            Application.OpenForms[0].Enabled = true;
+        }
+
+
+
         private void button_newNote_Click(object sender, EventArgs e)
         {
             Form_addNote fm = new Form_addNote();
