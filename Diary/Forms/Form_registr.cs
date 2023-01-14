@@ -16,6 +16,8 @@ namespace Diary.Forms
     {
         private MySqlCommand cmd;
         private MySqlDataReader reader;
+        private SelectLogin selUser;
+        private AddUser add;
 
         public Form_registr()
         {
@@ -35,11 +37,47 @@ namespace Diary.Forms
 
         private void button_registr_Click(object sender, EventArgs e)
         {
-            DBConnector.Open();
+            if (textBox_emailInput.Text != "" & textBox_loginInput.Text != "" & textBox_pswInput.Text != "")
+            {
+                DBConnector.Open();
 
+                selUser = new SelectLogin(textBox_loginInput.Text);
+                cmd = new MySqlCommand(selUser.SqlString, DBConnector.connect);
 
+                reader = cmd.ExecuteReader();
 
-            DBConnector.Close();
+                if (reader.Read())
+                {
+                    MessageBox.Show("Такой пользователь уже зарегистрирован! Смените ваш логин!","Ошибка");
+                }
+                else
+                {
+                    try
+                    {
+                        reader.Close();
+
+                        add = new AddUser(textBox_loginInput.Text, textBox_pswInput.Text, textBox_emailInput.Text);
+
+                        cmd = new MySqlCommand(add.SqlString, DBConnector.connect);
+
+                        if (cmd.ExecuteNonQuery() == 1)
+                        {
+                            this.Dispose();
+                            Application.OpenForms[0].Enabled = true;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw new Exception("Ошибка регистрации пользователя!");
+                    }
+                }
+
+                DBConnector.Close();
+            }
+            else
+            {
+                MessageBox.Show("Не все поля заполнены!", "Ошибка");
+            }
         }
 
 

@@ -16,7 +16,7 @@ namespace Diary.Forms
     public partial class Form_entrance : Form
     {
         private MySqlCommand cmd;
-        private SelectUser selUser;
+        private SelectLoginAndPsw selUser;
         private MySqlDataReader reader;
         public Form_entrance()
         {
@@ -37,23 +37,33 @@ namespace Diary.Forms
         {
             DBConnector.Open();
 
-            selUser = new SelectUser(textBox_loginInput.Text, textBox_pswInput.Text);
-            cmd = new MySqlCommand(selUser.SqlString, DBConnector.connect);
-
-            reader = cmd.ExecuteReader();
-
-            if (reader.Read())
+            if (textBox_loginInput.Text != "" && textBox_pswInput.Text != "")
             {
-                this.Dispose();
+                DBConnector.Open();
 
-                Application.OpenForms[0].Enabled= true;
+                selUser = new SelectLoginAndPsw(textBox_loginInput.Text, textBox_pswInput.Text);
+                cmd = new MySqlCommand(selUser.SqlString, DBConnector.connect);
+
+                reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    this.Dispose();
+
+                    Application.OpenForms[0].Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Мы не нашли такого пользователя!", "Ошибка!");
+                }
+
+                DBConnector.Close();
             }
             else
             {
-                MessageBox.Show("Мы не нашли такого пользователя!", "Ошибка!");
+                MessageBox.Show("Не все поля заполнены!","Ошибка") ;
             }
 
-            DBConnector.Close();
         }
 
 

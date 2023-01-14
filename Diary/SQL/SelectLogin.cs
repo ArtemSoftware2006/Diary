@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Diary.SQL
 {
-    internal class AddUser
+    internal class SelectLogin
     {
         public string SqlString { get; private set; }
-        public AddUser(string name, string password, string email)
+        public SelectLogin(string name)
         {
-            SqlString = $"INSERT INTO users (login, password, email) VALUES('{name}','{password}','{email}');";
+            SqlString = $"SELECT login FROM users WHERE login='{name}';";
         }
     }
 }

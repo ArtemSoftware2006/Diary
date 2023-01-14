@@ -7,10 +7,10 @@ using MySql.Data.MySqlClient;
 
 namespace Diary.SQL
 {
-    internal class SelectUser
+    internal class SelectLoginAndPsw
     {
         public string SqlString { get; private set; }
-        public SelectUser(string name, string password) 
+        public SelectLoginAndPsw(string name, string password) 
         {
             SqlString = $"SELECT login FROM users WHERE login='{name}' AND password='{password}';";
         }
