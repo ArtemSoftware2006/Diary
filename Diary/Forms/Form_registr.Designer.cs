@@ -129,9 +129,9 @@
             this.label_email.Location = new System.Drawing.Point(37, 228);
             this.label_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_email.Name = "label_email";
-            this.label_email.Size = new System.Drawing.Size(80, 25);
+            this.label_email.Size = new System.Drawing.Size(70, 25);
             this.label_email.TabIndex = 18;
-            this.label_email.Text = "Пароль";
+            this.label_email.Text = "Почта";
             // 
             // textBox_emailInput
             // 

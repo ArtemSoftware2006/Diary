@@ -14,11 +14,14 @@ namespace Diary.Forms
 {
     public partial class Form_registr : Form
     {
+        private bool IsMainClose = true;
         private MySqlCommand cmd;
         private MySqlDataReader reader;
-        private SelectLogin selUser;
+        private SelectUser selUser;
+        private SelectEmail selEmail;
         private AddUser add;
-        private bool IsMainClose = true;
+
+
         public Form_registr()
         {
             InitializeComponent();
@@ -31,14 +34,13 @@ namespace Diary.Forms
             {
                 DBConnector.Open();
 
-                selUser = new SelectLogin(textBox_loginInput.Text);
-                cmd = new MySqlCommand(selUser.SqlString, DBConnector.connect);
-
-                reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+                if (IsLoginInDB(textBox_loginInput.Text))
                 {
                     MessageBox.Show("Такой пользователь уже зарегистрирован! Смените ваш логин!","Ошибка");
+                }
+                else if(IsEmailInDB(textBox_emailInput.Text))
+                {
+                    MessageBox.Show("Пользователь с такой почтой уже создан! Нельзя иметь два учётные записи с одной почтой!", "Ошибка");
                 }
                 else
                 {
@@ -70,7 +72,38 @@ namespace Diary.Forms
             }
         }
 
+        private bool IsEmailInDB(string email)
+        {
+            if (!(reader == null))
+            {
+                reader.Close();
+            }
 
+            DBConnector.Open();
+
+            selEmail = new SelectEmail(email);
+            cmd = new MySqlCommand(selEmail.SqlString, DBConnector.connect);
+
+            reader = cmd.ExecuteReader();
+
+            return reader.Read();
+        }
+        private bool IsLoginInDB(string login)
+        {
+            if (!(reader == null))
+            {
+                reader.Close();
+            }
+
+            DBConnector.Open();
+
+            selUser = new SelectUser(login);
+            cmd = new MySqlCommand(selUser.SqlString, DBConnector.connect);
+
+            reader = cmd.ExecuteReader();
+
+            return reader.Read();
+        }
         private void Form_registr_MouseLeave(object sender, EventArgs e)
         {
             this.label_registr.ForeColor = Color.Red;

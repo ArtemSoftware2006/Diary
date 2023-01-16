@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Diary.SQL
 {
-    internal class SelectLogin
+    internal class SelectUser : SqlCmd
     {
-        public string SqlString { get; private set; }
-        public SelectLogin(string name)
+        public SelectUser(string name)
         {
             SqlString = $"SELECT login FROM users WHERE login='{name}';";
         }
