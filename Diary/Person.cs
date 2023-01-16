@@ -8,7 +8,7 @@ namespace Diary
 {
     static class Person
     {
-        static public string  IdUser{ get; set; }
+        static public int  IdUser{ get; set; }
         static public string Login { get; set; }
         static public string Password { get; set; }
         static public string Email { get; set; }

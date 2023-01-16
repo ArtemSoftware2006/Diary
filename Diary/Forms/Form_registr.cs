@@ -1,5 +1,6 @@
 ﻿using Diary.SQL;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,9 @@ namespace Diary.Forms
     {
         private bool IsMainClose = true;
         private MySqlCommand cmd;
+        private SelectPerson selectUser;
+        private DataTable table;
+        private MySqlDataAdapter adapter;
         private MySqlDataReader reader;
         private SelectUser selUser;
         private SelectEmail selEmail;
@@ -54,6 +58,19 @@ namespace Diary.Forms
 
                         if (cmd.ExecuteNonQuery() == 1)
                         {
+                            reader.Close();
+
+                            selectUser = new SelectPerson(textBox_loginInput.Text);
+                            table = new DataTable("Person");
+
+                            adapter = new MySqlDataAdapter(selectUser.SqlString, DBConnector.connect);
+                            adapter.Fill(table);
+
+                            Person.IdUser = Convert.ToInt32(table.Rows[0].ItemArray[0]);
+                            Person.Login = table.Rows[0].ItemArray[1].ToString();
+                            Person.Password = table.Rows[0].ItemArray[2].ToString();
+                            Person.Email = table.Rows[0].ItemArray[3].ToString();
+
                             Form_main.EnableMain();
                             this.Dispose();
                         }

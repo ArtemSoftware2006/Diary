@@ -16,7 +16,8 @@ namespace Diary.Forms
     public partial class Form_entrance : Form
     {
         private MySqlCommand cmd;
-        private SelectLoginAndPsw selUser;
+        private SelectPerson selectUser;
+        private SelectLoginAndPsw selectloginAndPsd;
         private DataTable table;
         private MySqlDataAdapter adapter;
         private MySqlDataReader reader;
@@ -34,8 +35,8 @@ namespace Diary.Forms
             {
                 DBConnector.Open();
 
-                selUser = new SelectLoginAndPsw(textBox_loginInput.Text, textBox_pswInput.Text);
-                cmd = new MySqlCommand(selUser.SqlString, DBConnector.connect);
+                selectloginAndPsd = new SelectLoginAndPsw(textBox_loginInput.Text, textBox_pswInput.Text);
+                cmd = new MySqlCommand(selectloginAndPsd.SqlString, DBConnector.connect);
 
                 reader = cmd.ExecuteReader();
 
@@ -43,14 +44,18 @@ namespace Diary.Forms
                 {
                     reader.Close();
 
+                    selectUser = new SelectPerson(textBox_loginInput.Text);
                     table = new DataTable("Person");
 
-                    adapter = new MySqlDataAdapter(selUser.SqlString, DBConnector.connect);
+                    adapter = new MySqlDataAdapter(selectUser.SqlString, DBConnector.connect);
                     adapter.Fill(table);
-
-
                    
-                    Form_main.EnableMain();
+                    Person.IdUser = Convert.ToInt32(table.Rows[0].ItemArray[0]);
+                    Person.Login = table.Rows[0].ItemArray[1].ToString();
+                    Person.Password = table.Rows[0].ItemArray[2].ToString();
+                    Person.Email = table.Rows[0].ItemArray[3].ToString();
+
+                    Form_main.EnableMain(); 
                     this.Dispose();
                 }
                 else

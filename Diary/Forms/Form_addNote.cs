@@ -22,11 +22,19 @@ namespace Diary.Forms
         {
             if (textBox_note.Text != string.Empty)
             {
-                DBConnector.Open();
+                try
+                {
 
+                }
+                catch (Exception)
+                {
 
-
-                DBConnector.Close();
+                    throw;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Вы не ввели никакого текста","Ошибка");
             }
         }
         private void button_reset_Click(object sender, EventArgs e)
