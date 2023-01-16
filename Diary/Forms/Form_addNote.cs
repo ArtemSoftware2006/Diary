@@ -18,11 +18,17 @@ namespace Diary.Forms
             InitializeComponent();
         }
 
-        private void Form_addNote_Load(object sender, EventArgs e)
+        private void button_addNote_Click(object sender, EventArgs e)
         {
+            if (textBox_note.Text != string.Empty)
+            {
+                DBConnector.Open();
 
+
+
+                DBConnector.Close();
+            }
         }
-
         private void button_reset_Click(object sender, EventArgs e)
         {
             textBox_note.Text = string.Empty;

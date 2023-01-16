@@ -37,12 +37,9 @@ namespace Diary
 
         private void Form_main_Load(object sender, EventArgs e)
         {
-            if (!Person.IsAvtarised)
-            {
-                Form_entrance fm = new Form_entrance();
-                fm.TopMost = true;
-                fm.Show();
-            }
+             Form_entrance fm = new Form_entrance();
+             fm.TopMost = true;
+             fm.Show();
         }
 
 

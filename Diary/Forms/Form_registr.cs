@@ -54,7 +54,6 @@ namespace Diary.Forms
 
                         if (cmd.ExecuteNonQuery() == 1)
                         {
-                            Person.IsAvtarised = true;
                             Form_main.EnableMain();
                             this.Dispose();
                         }

@@ -39,7 +39,6 @@ namespace Diary.Forms
 
                 if (reader.Read())
                 {
-                    Person.IsAvtarised = true;
                     Form_main.EnableMain();
                     this.Dispose();
                 }
