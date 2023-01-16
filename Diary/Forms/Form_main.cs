@@ -15,7 +15,6 @@ namespace Diary
 {
     public partial class Form_main : Form
     {
-        
         private string connectStr = "server=localhost;uid=root;pwd=1111;database=Diary";
 
         public Form_main()
@@ -38,9 +37,12 @@ namespace Diary
 
         private void Form_main_Load(object sender, EventArgs e)
         {
-            Form_entrance fm = new Form_entrance();
-            fm.TopMost = true;
-            fm.Show();
+            if (!Person.IsAvtarised)
+            {
+                Form_entrance fm = new Form_entrance();
+                fm.TopMost = true;
+                fm.Show();
+            }
         }
 
 

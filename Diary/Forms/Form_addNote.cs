@@ -30,8 +30,6 @@ namespace Diary.Forms
 
         private void button_backonMain_Click(object sender, EventArgs e)
         {
-            Thread th = new Thread(() => { Application.Run(new Form_main()); });
-            th.Start();
             this.Close();
         }
     }

@@ -96,6 +96,7 @@
     <Compile Include="Forms\Form_registr.Designer.cs">
       <DependentUpon>Form_registr.cs</DependentUpon>
     </Compile>
+    <Compile Include="Person.cs" />
     <Compile Include="SQL\AddUser.cs" />
     <Compile Include="SQL\SqlCmd.cs" />
     <Compile Include="SQL\DBConnector.cs" />
