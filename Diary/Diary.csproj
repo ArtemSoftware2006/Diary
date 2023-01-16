@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="Person.cs" />
     <Compile Include="SQL\AddUser.cs" />
+    <Compile Include="SQL\SelectPerson.cs" />
     <Compile Include="SQL\SqlCmd.cs" />
     <Compile Include="SQL\DBConnector.cs" />
     <Compile Include="Forms\Form_addNote.cs">
@@ -115,7 +116,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL\SelectEmail.cs" />
-    <Compile Include="SQL\SelectUser.cs" />
+    <Compile Include="SQL\SelectLogin.cs" />
     <Compile Include="SQL\SelectLoginAndPsw.cs" />
     <EmbeddedResource Include="Forms\Form_addNote.resx">
       <DependentUpon>Form_addNote.cs</DependentUpon>

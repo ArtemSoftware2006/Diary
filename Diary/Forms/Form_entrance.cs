@@ -17,6 +17,8 @@ namespace Diary.Forms
     {
         private MySqlCommand cmd;
         private SelectLoginAndPsw selUser;
+        private DataTable table;
+        private MySqlDataAdapter adapter;
         private MySqlDataReader reader;
         private bool IsMainClose = true;
         public Form_entrance()
@@ -39,6 +41,15 @@ namespace Diary.Forms
 
                 if (reader.Read())
                 {
+                    reader.Close();
+
+                    table = new DataTable("Person");
+
+                    adapter = new MySqlDataAdapter(selUser.SqlString, DBConnector.connect);
+                    adapter.Fill(table);
+
+
+                   
                     Form_main.EnableMain();
                     this.Dispose();
                 }
