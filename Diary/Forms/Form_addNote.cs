@@ -16,5 +16,15 @@ namespace Diary.Forms
         {
             InitializeComponent();
         }
+
+        private void Form_addNote_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

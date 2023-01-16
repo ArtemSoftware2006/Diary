@@ -97,7 +97,7 @@
       <DependentUpon>Form_registr.cs</DependentUpon>
     </Compile>
     <Compile Include="SQL\AddUser.cs" />
-    <Compile Include="SQL\Select.cs" />
+    <Compile Include="SQL\SqlCmd.cs" />
     <Compile Include="SQL\DBConnector.cs" />
     <Compile Include="Forms\Form_addNote.cs">
       <SubType>Form</SubType>

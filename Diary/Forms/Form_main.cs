@@ -17,6 +17,7 @@ namespace Diary
     {
         
         private string connectStr = "server=localhost;uid=root;pwd=1111;database=Diary";
+
         public Form_main()
         {
             InitializeComponent();

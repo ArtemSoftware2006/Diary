@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Diary.SQL
 {
-    internal class Select
+    internal class SqlCmd
     {
         public string SqlString { get; protected set; }
     }
