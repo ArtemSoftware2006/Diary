@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,9 +23,16 @@ namespace Diary.Forms
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void button_reset_Click(object sender, EventArgs e)
         {
+            textBox_note.Text = string.Empty;
+        }
 
+        private void button_backonMain_Click(object sender, EventArgs e)
+        {
+            Thread th = new Thread(() => { Application.Run(new Form_main()); });
+            th.Start();
+            this.Close();
         }
     }
 }

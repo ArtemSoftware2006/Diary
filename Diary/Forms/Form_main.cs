@@ -36,6 +36,13 @@ namespace Diary
         }
 
 
+        private void Form_main_Load(object sender, EventArgs e)
+        {
+            Form_entrance fm = new Form_entrance();
+            fm.TopMost = true;
+            fm.Show();
+        }
+
 
         private void button_newNote_Click(object sender, EventArgs e)
         {
@@ -48,11 +55,9 @@ namespace Diary
             this.Close();
         }
 
-        private void Form_main_Load(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            Form_entrance fm = new Form_entrance();
-            fm.TopMost= true;
-            fm.Show();
+
         }
     }
 }
