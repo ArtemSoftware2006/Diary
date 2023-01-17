@@ -37,7 +37,7 @@
             this.textBox_note = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label_date = new System.Windows.Forms.Label();
+            this.label_dateNow = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button_backonMain = new System.Windows.Forms.Button();
@@ -145,23 +145,23 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.label_dateLabel);
-            this.panel5.Controls.Add(this.label_date);
+            this.panel5.Controls.Add(this.label_dateNow);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(0, -8);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(669, 57);
             this.panel5.TabIndex = 7;
             // 
-            // label_date
+            // label_dateNow
             // 
-            this.label_date.AutoSize = true;
-            this.label_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_date.Location = new System.Drawing.Point(109, 11);
-            this.label_date.Name = "label_date";
-            this.label_date.Size = new System.Drawing.Size(167, 36);
-            this.label_date.TabIndex = 6;
-            this.label_date.Text = "21.11.2023";
-            this.label_date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_dateNow.AutoSize = true;
+            this.label_dateNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_dateNow.Location = new System.Drawing.Point(109, 11);
+            this.label_dateNow.Name = "label_dateNow";
+            this.label_dateNow.Size = new System.Drawing.Size(167, 36);
+            this.label_dateNow.TabIndex = 6;
+            this.label_dateNow.Text = "21.11.2023";
+            this.label_dateNow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
@@ -230,6 +230,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form_addNote";
             this.Text = "Добавить запись";
+            this.Load += new System.EventHandler(this.Form_addNote_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -259,6 +260,6 @@
         private System.Windows.Forms.TextBox textBox_note;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label_date;
+        private System.Windows.Forms.Label label_dateNow;
     }
 }
