@@ -85,12 +85,13 @@
             // 
             // panel3
             // 
+            this.panel3.AutoSize = true;
             this.panel3.Controls.Add(this.label_logo);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(13, 6);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(669, 49);
+            this.panel3.Size = new System.Drawing.Size(242, 49);
             this.panel3.TabIndex = 8;
             // 
             // label_logo
@@ -232,6 +233,7 @@
             this.Text = "Добавить запись";
             this.Load += new System.EventHandler(this.Form_addNote_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);

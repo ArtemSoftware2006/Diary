@@ -1,10 +1,13 @@
-﻿using Diary.SQL;
+﻿using Diary.Data.Notes;
+using Diary.Properties;
+using Diary.SQL;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,6 +18,7 @@ namespace Diary.Forms
 {
     public partial class Form_addNote : Form
     {
+        private NotesPath path = new NotesPath();
         private AddNote addNote;
         private MySqlCommand cmd;
         public Form_addNote()
@@ -32,11 +36,15 @@ namespace Diary.Forms
 
                     addNote = new AddNote(DateTime.Now,textBox_note.Text,Person.IdUser);
 
-                    cmd = new MySqlCommand(addNote.SqlString, DBConnector.connect);
-                    if (cmd.ExecuteNonQuery() == 1)
-                    {
-                        MessageBox.Show("Ваша запись ддобавлена!","Запись добавлена");
-                    }
+                    ComponentResourceManager resourceManager = new ComponentResourceManager(typeof(Form_main));
+
+                    label_logo.Text = Properties.Settings.Default.;
+
+                    //cmd = new MySqlCommand(addNote.SqlString, DBConnector.connect);
+                    //if (cmd.ExecuteNonQuery() == 1)
+                    //{
+                    //    MessageBox.Show("Ваша запись ддобавлена!","Запись добавлена");
+                    //}
 
                     DBConnector.Close();
                 }

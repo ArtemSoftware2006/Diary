@@ -84,6 +84,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NotesPath.cs" />
     <Compile Include="Forms\Form_entrance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,12 +98,12 @@
       <DependentUpon>Form_registr.cs</DependentUpon>
     </Compile>
     <Compile Include="Person.cs" />
-    <Compile Include="SQL\AddNote.cs" />
-    <Compile Include="SQL\AddUser.cs" />
-    <Compile Include="SQL\MySqlDateTime.cs" />
-    <Compile Include="SQL\SelectPerson.cs" />
-    <Compile Include="SQL\SqlCmd.cs" />
-    <Compile Include="SQL\DBConnector.cs" />
+    <Compile Include="Data\SQL\AddNote.cs" />
+    <Compile Include="Data\SQL\AddUser.cs" />
+    <Compile Include="Data\SQL\MySqlDateTime.cs" />
+    <Compile Include="Data\SQL\SelectPerson.cs" />
+    <Compile Include="Data\SQL\SqlCmd.cs" />
+    <Compile Include="Data\SQL\DBConnector.cs" />
     <Compile Include="Forms\Form_addNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,9 +118,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SQL\SelectEmail.cs" />
-    <Compile Include="SQL\SelectLogin.cs" />
-    <Compile Include="SQL\SelectLoginAndPsw.cs" />
+    <Compile Include="Data\SQL\SelectEmail.cs" />
+    <Compile Include="Data\SQL\SelectLogin.cs" />
+    <Compile Include="Data\SQL\SelectLoginAndPsw.cs" />
     <EmbeddedResource Include="Forms\Form_addNote.resx">
       <DependentUpon>Form_addNote.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,18 +135,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -156,5 +158,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Notes\qw.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
