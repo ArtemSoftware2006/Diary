@@ -18,6 +18,7 @@ namespace Diary.Forms
 {
     public partial class Form_addNote : Form
     {
+        private string pathNotes = Application.StartupPath + "\\Notes";
         private NotesPath path = new NotesPath();
         private AddNote addNote;
         private MySqlCommand cmd;
@@ -32,25 +33,24 @@ namespace Diary.Forms
             {
                 try
                 {
-                    DBConnector.Open();
-
                     addNote = new AddNote(DateTime.Now,textBox_note.Text,Person.IdUser);
 
-                    ComponentResourceManager resourceManager = new ComponentResourceManager(typeof(Form_main));
+                    if (!Directory.Exists(pathNotes))
+                    {
+                        Directory.CreateDirectory(pathNotes);
+                    }
 
-                    label_logo.Text = Properties.Settings.Default.;
+                    File.WriteAllText(pathNotes + $"//Note{Settings.Default.CounterNotes}.txt", textBox_note.Text);
 
-                    //cmd = new MySqlCommand(addNote.SqlString, DBConnector.connect);
-                    //if (cmd.ExecuteNonQuery() == 1)
-                    //{
-                    //    MessageBox.Show("Ваша запись ддобавлена!","Запись добавлена");
-                    //}
+                    Settings.Default.CounterNotes++;
+                    Settings.Default.Save();
 
-                    DBConnector.Close();
+                    MessageBox.Show("Запись сохранена!","Успешно");
+
                 }
                 catch (Exception)
                 {
-
+                    MessageBox.Show("Ваша запись не сохранена!","Ошибка");
                     throw;
                 }
             }
