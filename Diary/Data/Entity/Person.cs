@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Diary
 {
-    static class Person
+    public class Person
     {
         static public int  IdUser{ get; set; }
         static public string Login { get; set; }
