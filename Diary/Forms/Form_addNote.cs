@@ -19,9 +19,7 @@ namespace Diary.Forms
     public partial class Form_addNote : Form
     {
         private string pathNotes = Application.StartupPath + "\\Notes";
-        private NotesPath path = new NotesPath();
-        private AddNote addNote;
-        private MySqlCommand cmd;
+
         public Form_addNote()
         {
             InitializeComponent();
@@ -33,8 +31,6 @@ namespace Diary.Forms
             {
                 try
                 {
-                    addNote = new AddNote(DateTime.Now,textBox_note.Text,Person.IdUser);
-
                     if (!Directory.Exists(pathNotes))
                     {
                         Directory.CreateDirectory(pathNotes);

@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button_newNote = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button_showAllNotes = new System.Windows.Forms.Button();
             this.button_close = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -68,15 +68,15 @@
             this.button2.Text = "Последняя запись";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button_showAllNotes
             // 
-            this.button3.Location = new System.Drawing.Point(166, 365);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(254, 58);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Все записи";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button_showAllNotes.Location = new System.Drawing.Point(166, 365);
+            this.button_showAllNotes.Name = "button_showAllNotes";
+            this.button_showAllNotes.Size = new System.Drawing.Size(254, 58);
+            this.button_showAllNotes.TabIndex = 3;
+            this.button_showAllNotes.Text = "Все записи";
+            this.button_showAllNotes.UseVisualStyleBackColor = true;
+            this.button_showAllNotes.Click += new System.EventHandler(this.button_showAllNotes_Click);
             // 
             // button_close
             // 
@@ -95,7 +95,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(607, 630);
             this.Controls.Add(this.button_close);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button_showAllNotes);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button_newNote);
             this.Controls.Add(this.label1);
@@ -116,7 +116,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_newNote;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button_showAllNotes;
         private System.Windows.Forms.Button button_close;
     }
 }

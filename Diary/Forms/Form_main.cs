@@ -54,9 +54,10 @@ namespace Diary
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button_showAllNotes_Click(object sender, EventArgs e)
         {
-
+            Form_ShowNotes fm = new Form_ShowNotes();
+            fm.ShowDialog();
         }
     }
 }
