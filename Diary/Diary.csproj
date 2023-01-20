@@ -101,15 +101,17 @@
   <ItemGroup>
     <Compile Include="Data\Entity\Note.cs" />
     <Compile Include="Data\Interfaces\IDateTime.cs" />
+    <Compile Include="Data\Interfaces\INoteSpecification.cs" />
     <Compile Include="Data\Interfaces\INotesRepozitory.cs" />
     <Compile Include="Data\Interfaces\IUserRepozitory.cs" />
+    <Compile Include="Data\Interfaces\IUserSpecification.cs" />
     <Compile Include="Forms\Form_ShowNotes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Form_ShowNotes.Designer.cs">
       <DependentUpon>Form_ShowNotes.cs</DependentUpon>
     </Compile>
-    <Compile Include="NotesPath.cs" />
+    <Compile Include="Data\Services\NotesPath.cs" />
     <Compile Include="Forms\Form_entrance.cs">
       <SubType>Form</SubType>
     </Compile>

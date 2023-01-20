@@ -8,5 +8,7 @@ namespace Diary.Data.Interfaces
 {
     internal interface IDateTime
     {
+        string Date { get; set; }
+        void ConvertDate(DateTime datetime);
     }
 }
