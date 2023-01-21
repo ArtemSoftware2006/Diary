@@ -12,7 +12,8 @@ namespace Diary.Data.Notes
 {
     public class NotePath : Path
     {
-        public override void CreatePath()
+
+        public override void CreateNewPath()
         {
             CurrentPath = CurrentDirectory + "/Note" +Settings.Default.CounterNotes.ToString() + ".txt";
         }

@@ -91,6 +91,7 @@
             this.Name = "Form_ShowNotes";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "Ваши записи";
+            this.Load += new System.EventHandler(this.Form_ShowNotes_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

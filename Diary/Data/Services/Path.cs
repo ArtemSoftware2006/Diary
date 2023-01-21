@@ -9,8 +9,8 @@ namespace Diary.Data.Services
     abstract public class Path
     {
         public string CurrentDirectory { get; protected set; }
-        public string CurrentPath { get; protected set; }
-        public virtual void CreatePath() { }
+        public string CurrentPath { get; set; }
+        public virtual void CreateNewPath() { }
         public virtual void CreateDirectory() { }
     }
 }

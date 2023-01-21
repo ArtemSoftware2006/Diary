@@ -7,13 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Diary.Data.Entity;
 using Diary.Data.Interfaces;
+using Diary.SQL;
 
 namespace Diary.Data.Directory
 {
-    public class FileSaving : INotesRepozitory , ISelectNotes
+    public class FileNoteSaving : INotesRepozitory , ISelectNotes
     {
         public void CreateNote(Note note)
         {
+            File.WriteAllText(note.PathNote.CurrentPath, note.Date.ToString() + Environment.NewLine);
             File.WriteAllText(note.PathNote.CurrentPath, note.Text);
         }
 
@@ -22,19 +24,24 @@ namespace Diary.Data.Directory
             File.Delete(note.PathNote.CurrentPath);
         }
 
-        public string ReadNote(Note note)
+        public Note ReadNote(Note note)
         {
-            return File.ReadAllText(note.PathNote.CurrentPath);
+            Note tmp = new Note();
+
+            tmp.Date = new MySqlDateTime() { Date = File.ReadLines(note.PathNote.CurrentPath).First() };
+            tmp.Text =  String.Join(",",File.ReadAllText(note.PathNote.CurrentPath).Skip(1));
+
+            return tmp;
         }
 
-        public DataSet Select(INoteSpecification specific, Note note)
+        public bool Select(INoteSpecification specific, Note note)
         {
-            return specific.Select(note);
+            return specific.Find(note);
         }
 
         public void UpdateNote(Note note)
         {
-            File.WriteAllText(note.PathNote.CurrentPath, note.Text);
+            File.WriteAllText(note.PathNote.CurrentPath, note.Date + Environment.NewLine + note.Text);
         }
     }
 }

@@ -13,6 +13,6 @@ namespace Diary.Data.Interfaces
         void CreateNote(Note note);
         void DeleteNote(Note note);
         void UpdateNote(Note note);
-        string ReadNote(Note note);
+        Note ReadNote(Note note);
     }
 }

@@ -24,7 +24,7 @@ namespace Diary.Forms
     {
         IDateTime dt = new MySqlDateTime();
         private NotePath pathNotes = new NotePath();
-        private FileSaving file = new FileSaving();
+        private FileNoteSaving file = new FileNoteSaving();
         private Note currentNote = new Note();
         public Form_addNote()
         {
@@ -44,7 +44,7 @@ namespace Diary.Forms
                         Directory.CreateDirectory(pathNotes.CurrentDirectory);
                     }
 
-                    pathNotes.CreatePath();
+                    pathNotes.CreateNewPath();
                     dt.ConvertDate(DateTime.Now);
 
                     currentNote.Text = textBox_note.Text;

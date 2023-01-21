@@ -6,6 +6,5 @@ namespace Diary.Data.Interfaces
     public interface INoteSpecification
     {
         bool Find(Note note);
-        DataSet Select(Note note);
     }
 }

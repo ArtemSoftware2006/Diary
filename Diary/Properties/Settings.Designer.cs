@@ -34,5 +34,17 @@ namespace Diary.Properties {
                 this["CounterNotes"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PathToNote {
+            get {
+                return ((string)(this["PathToNote"]));
+            }
+            set {
+                this["PathToNote"] = value;
+            }
+        }
     }
 }

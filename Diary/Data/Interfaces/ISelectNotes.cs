@@ -10,6 +10,6 @@ namespace Diary.Data.Interfaces
 {
     internal interface ISelectNotes
     {
-        DataSet Select(INoteSpecification spec, Note note);
+        bool Select(INoteSpecification spec, Note note);
     }
 }
