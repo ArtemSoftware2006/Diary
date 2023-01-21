@@ -2,6 +2,6 @@
 {
     public interface IUserSpecification
     {
-        bool Specificed(Person user);
+        //bool Specificed(Person user);
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Diary.Data.Directory;
+using Diary.Data.Entity;
+using Diary.Data.Interfaces;
 using Diary.Data.Notes;
 using Diary.Properties;
 using Diary.SQL;
@@ -19,8 +21,10 @@ namespace Diary.Forms
 {
     public partial class Form_addNote : Form
     {
+        IDateTime dt = new MySqlDateTime();
         private NotePath pathNotes;
         private FileSaving file;
+        private Note currentNote;
         public Form_addNote()
         {
             InitializeComponent();
@@ -32,9 +36,15 @@ namespace Diary.Forms
             {
                 try
                 {
-                   
+                    pathNotes.CreatePath();
+                    dt.ConvertDate(DateTime.Now);
 
-                    File.WriteAllText(pathNotes + $"//Note{Settings.Default.CounterNotes}.txt", textBox_note.Text);
+                    currentNote.Text = textBox_note.Text;
+                    currentNote.PathNote = pathNotes;
+                    currentNote.Date = dt;
+                    currentNote.UserId = Person.IdUser; // Тонкое место Не реализовал класс Person по всем интерфейсам
+
+                    file.CreateNote(currentNote);
 
                     Settings.Default.CounterNotes++;
                     Settings.Default.Save();
