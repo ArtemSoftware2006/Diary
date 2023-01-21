@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Diary.Data.Notes;
 using Diary.Forms;
 using MySql.Data.MySqlClient;
 
@@ -16,7 +18,6 @@ namespace Diary
     public partial class Form_main : Form
     {
         private string connectStr = "server=localhost;uid=root;pwd=1111;database=Diary";
-
         public Form_main()
         {
             InitializeComponent();
@@ -37,7 +38,15 @@ namespace Diary
 
         private void Form_main_Load(object sender, EventArgs e)
         {
-             Form_entrance fm = new Form_entrance();
+            NotePath path = new NotePath();
+            path.CreateDirectory();
+
+            if (!Directory.Exists(path.CurrentDirectory))
+            {
+                Directory.CreateDirectory(path.CurrentDirectory);
+            }
+
+            Form_entrance fm = new Form_entrance();
              fm.TopMost = true;
              fm.Show();
         }

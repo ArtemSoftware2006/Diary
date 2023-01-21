@@ -32,10 +32,7 @@ namespace Diary.Forms
             {
                 try
                 {
-                    if (!Directory.Exists(pathNotes))
-                    {
-                        Directory.CreateDirectory(pathNotes);
-                    }
+                   
 
                     File.WriteAllText(pathNotes + $"//Note{Settings.Default.CounterNotes}.txt", textBox_note.Text);
 

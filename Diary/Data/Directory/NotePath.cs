@@ -14,7 +14,11 @@ namespace Diary.Data.Notes
     {
         public override void CreatePath()
         {
-            CurrentPath = Application.StartupPath + "//Note" + Settings.Default.CounterNotes.ToString();
+            CurrentPath = CurrentDirectory + "/Note" +Settings.Default.CounterNotes.ToString() + ".txt";
+        }
+        public override void CreateDirectory()
+        {
+            CurrentDirectory = Application.StartupPath + "//Notes";
         }
     }
 }
