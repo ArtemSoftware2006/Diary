@@ -19,7 +19,7 @@ namespace Diary.Data.Directory
             this.stopNumber = stopNumber;
         }
 
-        public bool Find(Note note)
+        public bool Quary(Note note)
         {
             int count = int.Parse(Path.GetFileNameWithoutExtension(note.PathNote.CurrentPath));
             return (startNumber < count) && (stopNumber > count);

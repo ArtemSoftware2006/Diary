@@ -11,7 +11,7 @@ using Diary.SQL;
 
 namespace Diary.Data.Directory
 {
-    public class FileNoteSaving : INotesRepozitory , ISelectNotes
+    public class FileNoteSaving : INotesRepozitory , IFindNote , ISelectNode
     {
         public void CreateNote(Note note)
         {
@@ -34,14 +34,19 @@ namespace Diary.Data.Directory
             return tmp;
         }
 
-        public bool Select(INoteSpecification specific, Note note)
+        public bool Find(INoteSpecification specific, Note note)
         {
-            return specific.Find(note);
+            return specific.Quary(note);
         }
 
         public void UpdateNote(Note note)
         {
             File.WriteAllText(note.PathNote.CurrentPath, note.Date + Environment.NewLine + note.Text);
+        }
+
+        public Note Select(INoteSpecification spec, Note note)
+        {
+            return spec.Quary(note);
         }
     }
 }

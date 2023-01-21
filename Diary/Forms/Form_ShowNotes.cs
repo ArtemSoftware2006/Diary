@@ -43,7 +43,7 @@ namespace Diary.Forms
                 note.PathNote = path;
 
                 note = file.ReadNote(note);
-                if (file.Select(betweenNote, note))
+                if (file.Find(betweenNote, note))
                 {
                     recordNote.Location = new Point(0, (Settings.Default.CounterNotes - i) * recordNote.Height);
                     recordNote.Text = note.Date.Date.ToString();

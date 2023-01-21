@@ -5,6 +5,6 @@ namespace Diary.Data.Interfaces
 {
     public interface INoteSpecification
     {
-        bool Find(Note note);
+        bool Quary(Note note);
     }
 }

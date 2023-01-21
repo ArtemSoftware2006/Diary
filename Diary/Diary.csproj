@@ -102,11 +102,13 @@
     <Compile Include="Data\Directory\FileNoteSaving.cs" />
     <Compile Include="Data\Directory\FileUserSaving.cs" />
     <Compile Include="Data\Directory\FileFindNotesBetween.cs" />
+    <Compile Include="Data\Directory\FindNoteAtPath.cs" />
     <Compile Include="Data\Entity\Note.cs" />
     <Compile Include="Data\Interfaces\IDateTime.cs" />
     <Compile Include="Data\Interfaces\INoteSpecification.cs" />
     <Compile Include="Data\Interfaces\INotesRepozitory.cs" />
-    <Compile Include="Data\Interfaces\ISelectNotes.cs" />
+    <Compile Include="Data\Interfaces\IFindNote.cs" />
+    <Compile Include="Data\Interfaces\ISelectNode.cs" />
     <Compile Include="Data\Interfaces\IUserRepozitory.cs" />
     <Compile Include="Data\Interfaces\IUserSpecification.cs" />
     <Compile Include="Data\Services\Path.cs" />
