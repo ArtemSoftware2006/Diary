@@ -6,14 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel;
+using Diary.Data.Services;
+
 namespace Diary.Data.Notes
 {
-    internal class NotesPath
+    public class NotesPath : Path
     {
-        public string Path { get; private set; }
-        public string GetPathByIdUSer(int iduser)
+        public override void CreatePath()
         {
-            return Path;
+            CurrentPath = Application.StartupPath + "//Note" + Settings.Default.CounterNotes.ToString();
         }
     }
 }
