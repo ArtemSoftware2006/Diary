@@ -12,7 +12,5 @@ namespace Diary.Data.Interfaces
         void CreateUser(Person user);
         void DeleteUser(Person user);
         Person ReadtUser(Person user);
-
-        List<DataSet> Query(IUserSpecification userSpecification);
     }
 }

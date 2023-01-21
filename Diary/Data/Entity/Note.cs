@@ -13,7 +13,8 @@ namespace Diary.Data.Entity
     public class Note
     {
         public int Id { get; set; }
-        public NotesPath PathNote { get;  set; }
+        public string Text { get; set; }
+        public NotePath PathNote { get;  set; }
         public IDateTime Date { get; set; }
         public int UserId { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿using Diary.Data.Notes;
+﻿using Diary.Data.Directory;
+using Diary.Data.Notes;
 using Diary.Properties;
 using Diary.SQL;
 using MySql.Data.MySqlClient;
@@ -18,8 +19,8 @@ namespace Diary.Forms
 {
     public partial class Form_addNote : Form
     {
-        private string pathNotes = Application.StartupPath + "\\Notes";
-
+        private NotePath pathNotes;
+        private FileSaving file;
         public Form_addNote()
         {
             InitializeComponent();

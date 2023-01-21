@@ -13,7 +13,6 @@ namespace Diary.Data.Interfaces
         void CreateNote(Note note);
         void DeleteNote(Note note);
         void UpdateNote(Note note);
-        void ReadNote(Note note);
-        List<DataSet> Query(INoteSpecification note);
+        string ReadNote(Note note);
     }
 }

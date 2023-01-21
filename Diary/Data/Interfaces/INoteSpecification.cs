@@ -1,9 +1,11 @@
 ﻿using Diary.Data.Entity;
+using System.Data;
 
 namespace Diary.Data.Interfaces
 {
     public interface INoteSpecification
     {
-        bool Specificed(Note note);
+        bool Find(Note note);
+        DataSet Select(Note note);
     }
 }

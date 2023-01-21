@@ -104,6 +104,7 @@
     <Compile Include="Data\Interfaces\IDateTime.cs" />
     <Compile Include="Data\Interfaces\INoteSpecification.cs" />
     <Compile Include="Data\Interfaces\INotesRepozitory.cs" />
+    <Compile Include="Data\Interfaces\ISelectNotes.cs" />
     <Compile Include="Data\Interfaces\IUserRepozitory.cs" />
     <Compile Include="Data\Interfaces\IUserSpecification.cs" />
     <Compile Include="Data\Services\Path.cs" />
@@ -113,7 +114,7 @@
     <Compile Include="Forms\Form_ShowNotes.Designer.cs">
       <DependentUpon>Form_ShowNotes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Directory\NotesPath.cs" />
+    <Compile Include="Data\Directory\NotePath.cs" />
     <Compile Include="Forms\Form_entrance.cs">
       <SubType>Form</SubType>
     </Compile>
