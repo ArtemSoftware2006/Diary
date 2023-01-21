@@ -37,16 +37,8 @@ namespace Diary
 
 
         private void Form_main_Load(object sender, EventArgs e)
-        {
-            NotePath path = new NotePath();
-            path.CreateDirectory();
-
-            if (!Directory.Exists(path.CurrentDirectory))
-            {
-                Directory.CreateDirectory(path.CurrentDirectory);
-            }
-
-            Form_entrance fm = new Form_entrance();
+        { 
+             Form_entrance fm = new Form_entrance();
              fm.TopMost = true;
              fm.Show();
         }

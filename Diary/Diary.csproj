@@ -99,7 +99,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Directory\FileSaving.cs" />
+    <Compile Include="Data\Directory\FileNoteSaving.cs" />
+    <Compile Include="Data\Directory\FileUserSaving.cs" />
     <Compile Include="Data\Entity\Note.cs" />
     <Compile Include="Data\Interfaces\IDateTime.cs" />
     <Compile Include="Data\Interfaces\INoteSpecification.cs" />

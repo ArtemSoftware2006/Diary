@@ -11,8 +11,7 @@ namespace Diary.SQL
         private MySqlDateTime dateTime;
         public AddNote(DateTime datetime, string note, int userId) 
         {
-            dateTime = new MySqlDateTime(datetime);
-            SqlString = $"INSERT INTO notes (date,note,users_id) VALUES('{dateTime.StringMySqlDateTime}','{note}',{userId});";
+            SqlString = $"INSERT INTO notes (date,note,users_id) VALUES('{dateTime.Date}','{note}',{userId});";
         }
     }
 }

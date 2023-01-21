@@ -2,6 +2,7 @@
 using Diary.Data.Entity;
 using Diary.Data.Interfaces;
 using Diary.Data.Notes;
+using Diary.Data.Services;
 using Diary.Properties;
 using Diary.SQL;
 using MySql.Data.MySqlClient;
@@ -22,9 +23,9 @@ namespace Diary.Forms
     public partial class Form_addNote : Form
     {
         IDateTime dt = new MySqlDateTime();
-        private NotePath pathNotes;
-        private FileSaving file;
-        private Note currentNote;
+        private NotePath pathNotes = new NotePath();
+        private FileSaving file = new FileSaving();
+        private Note currentNote = new Note();
         public Form_addNote()
         {
             InitializeComponent();
@@ -36,6 +37,13 @@ namespace Diary.Forms
             {
                 try
                 {
+                    pathNotes.CreateDirectory();
+
+                    if (!Directory.Exists(pathNotes.CurrentDirectory))
+                    {
+                        Directory.CreateDirectory(pathNotes.CurrentDirectory);
+                    }
+
                     pathNotes.CreatePath();
                     dt.ConvertDate(DateTime.Now);
 
