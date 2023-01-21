@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Diary.Data.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace Diary.SQL
 {
-    internal class MySqlDateTime
+    internal class MySqlDateTime : IDateTime
     {
-        public string StringMySqlDateTime { get; private set; }
-        public MySqlDateTime(DateTime date)
+        public string Date { get ; set ; }
+
+        public void ConvertDate(DateTime datetime)
         {
-            StringMySqlDateTime = date.Year.ToString() + "-" + date.Month.ToString() + "-" + date.Day.ToString() 
-                + " " + date.Hour.ToString() + ":" + date.Minute.ToString() + ":" + date.Second.ToString();
+            Date = datetime.Year.ToString() + "-" + datetime.Month.ToString() + "-" + datetime.Day.ToString()
+                           + " " + datetime.Hour.ToString() + ":" + datetime.Minute.ToString() 
+                           + ":" + datetime.Second.ToString();
         }
     }
 }

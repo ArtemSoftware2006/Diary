@@ -2,5 +2,6 @@
 {
     public interface IUserSpecification
     {
+        bool Specificed(Person user);
     }
 }

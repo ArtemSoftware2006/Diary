@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Diary.Data.Interfaces
 {
-    internal interface IDateTime
+    public interface IDateTime
     {
         string Date { get; set; }
         void ConvertDate(DateTime datetime);

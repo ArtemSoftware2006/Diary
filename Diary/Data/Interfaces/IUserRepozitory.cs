@@ -9,10 +9,10 @@ namespace Diary.Data.Interfaces
 {
     internal interface IUserRepozitory
     {
-        void AddUser(Person user);
+        void CreateUser(Person user);
         void DeleteUser(Person user);
-        Person SelectUser(Person user);
+        Person ReadtUser(Person user);
 
-        List<T> Quary();
+        List<DataSet> Query(IUserSpecification userSpecification);
     }
 }
