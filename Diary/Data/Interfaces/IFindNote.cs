@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Diary.Data.Interfaces
 {
-    internal interface ISelectNotes
+    public interface IFindNote
     {
-        bool Select(INoteSpecification spec, Note note);
+        bool Find(Note note);
     }
 }

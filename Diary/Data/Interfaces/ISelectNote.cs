@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Diary.Data.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Diary.Data.Interfaces
 {
-    internal interface ISelectNode
+    public interface ISelectNote
     {
+        Note Select(Note note);
+
     }
 }

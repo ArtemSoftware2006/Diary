@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Diary.Data.Directory
 {
-    public class FileFindNotesBetween : INoteSpecification
+    public class FileFindNotesBetween : IFindNote
     {
         public int startNumber { get; set; }
         public int stopNumber { get; set; }
@@ -19,7 +19,7 @@ namespace Diary.Data.Directory
             this.stopNumber = stopNumber;
         }
 
-        public bool Quary(Note note)
+        public bool Find(Note note)
         {
             int count = int.Parse(Path.GetFileNameWithoutExtension(note.PathNote.CurrentPath));
             return (startNumber < count) && (stopNumber > count);
