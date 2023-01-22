@@ -22,7 +22,7 @@ namespace Diary.Forms
         private Note note;
         private NotePath path;
         private FileFindNotesBetween betweenNote;
-        private List<Button> records_Note;
+        private Stack<Button> ListRecords_Note;
         private int recordNote_Height;
         private int alsoShown;
         private const int counterNotesGroup = 5;
@@ -36,7 +36,7 @@ namespace Diary.Forms
             recordNote_Height = (panel_recordNotes.Height * (100 / counterNotesGroup))/100 + 10;
 
             file = new FileNoteSaving();
-            records_Note = new List<Button>();
+            ListRecords_Note = new Stack<Button>();
             note = new Note();
             path = new NotePath();
             alsoShown = 0;
@@ -47,24 +47,12 @@ namespace Diary.Forms
 
             this.ActiveControl = groupBox_recordNote.Controls[groupBox_recordNote.Controls.Count - 1];
         }
-        private Button CreateRecordNote(Point pt, string text)
+        private void panel_recordNotes_Scroll(object sender, ScrollEventArgs e)
         {
-            Button btn = new Button();
-
-            btn.FlatAppearance.BorderSize = 3;
-            btn.FlatAppearance.BorderColor = Color.Black;
-            btn.Height = recordNote_Height;
-            btn.Margin = new Padding(4, 20, 4, 20);
-            btn.Padding = new Padding(6);
-            btn.BackColor = Color.White;
-            btn.ForeColor = Color.Black;
-            btn.Dock = DockStyle.Top;
-            btn.TextAlign = ContentAlignment.TopLeft;
-            btn.AutoSize = false;
-            btn.Location = pt;
-            btn.Text = text;
-
-            return btn;
+            if (panel_recordNotes.VerticalScroll.Value >= panel_recordNotes.VerticalScroll.Maximum - panel_recordNotes.ClientRectangle.Height + 1)
+            {
+                ShowNotes();
+            }
         }
 
         private void ShowNotes()
@@ -87,20 +75,38 @@ namespace Diary.Forms
                         note = noteRep.ReadNote(note.PathNote);
                         if (file.Find(betweenNote, note))
                         {
-                            records_Note.Add(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), note.Text));
+                            ListRecords_Note.Push(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), note.Text));
                         }
                     }
                 }
-                records_Note.Reverse();
-                records_Note.ForEach(x => panel_recordNotes.Controls.Add(x));
+                AddNotesInGroupBox();
             }
         }
-
-        private void panel_recordNotes_Scroll(object sender, ScrollEventArgs e)
+        private Button CreateRecordNote(Point pt, string text)
         {
-            if (panel_recordNotes.VerticalScroll.Value >= panel_recordNotes.VerticalScroll.Maximum - panel_recordNotes.ClientRectangle.Height + 1)
+            Button btn = new Button();
+
+            btn.FlatAppearance.BorderSize = 3;
+            btn.FlatAppearance.BorderColor = Color.Black;
+            btn.Height = recordNote_Height;
+            btn.Margin = new Padding(4, 20, 4, 20);
+            btn.Padding = new Padding(6);
+            btn.BackColor = Color.White;
+            btn.ForeColor = Color.Black;
+            btn.Dock = DockStyle.Top;
+            btn.TextAlign = ContentAlignment.TopLeft;
+            btn.AutoSize = false;
+            btn.Location = pt;
+            btn.Text = text;
+
+            return btn;
+        }
+        private void AddNotesInGroupBox()
+        {
+            Stack<Button> tmp = ListRecords_Note;
+            foreach (var note in tmp)
             {
-                ShowNotes();
+                panel_recordNotes.Controls.Add(note);
             }
         }
     }
