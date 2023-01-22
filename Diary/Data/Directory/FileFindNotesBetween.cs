@@ -11,18 +11,18 @@ namespace Diary.Data.Directory
 {
     public class FileFindNotesBetween : IFindNote
     {
-        public int startNumber { get; set; }
-        public int stopNumber { get; set; }
+        public int StartNumber { get; set; }
+        public int StopNumber { get; set; }
         public FileFindNotesBetween(int startNumber, int stopNumber)
         {
-            this.startNumber = startNumber;
-            this.stopNumber = stopNumber;
+            this.StartNumber = startNumber;
+            this.StopNumber = stopNumber;
         }
 
         public bool Find(Note note)
         {
-            int count = int.Parse(Path.GetFileNameWithoutExtension(note.PathNote.CurrentPath));
-            return (startNumber < count) && (stopNumber > count);
+            int count = int.Parse(Path.GetFileNameWithoutExtension(note.PathNote.CurrentPath).ToString().Substring(4));
+            return (StartNumber < count) && (StopNumber > count);
         }
     }
 }

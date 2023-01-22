@@ -1,5 +1,6 @@
 ﻿using Diary.Data.Directory;
 using Diary.Data.Entity;
+using Diary.Data.Interfaces;
 using Diary.Data.Notes;
 using Diary.Properties;
 using System;
@@ -16,11 +17,14 @@ namespace Diary.Forms
 {
     public partial class Form_ShowNotes : Form
     {
+        private NotesRepozitory noteRep;
         private FileNoteSaving file;
         private Note note;
         private NotePath path;
         private FileFindNotesBetween betweenNote;
-        private Button recordNote;
+        private List<Button> records_Note;
+        private const int counterNotesGroup = 5;
+        private int recordNote_Height;
         public Form_ShowNotes()
         {
             InitializeComponent();
@@ -28,38 +32,52 @@ namespace Diary.Forms
 
         private void Form_ShowNotes_Load(object sender, EventArgs e)
         {
-            betweenNote = new FileFindNotesBetween(1, 5);
+            recordNote_Height = (int)(groupBox_recordNote.Height * 0.2) - 5;
+
+            betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
+                - counterNotesGroup - 1, Settings.Default.CounterNotes);
             file = new FileNoteSaving();
-            recordNote = new Button();
+            records_Note = new List<Button>();
             note = new Note();
             path = new NotePath();
 
-            CreateRecordNote();
+            noteRep = file;
 
-            for (int i = Settings.Default.CounterNotes; i > 1; i--)
+            for (int i = 1; i < counterNotesGroup + 1; i++)
             {
                 path.CreateDirectory();
-                path.CurrentPath = path.CurrentDirectory + $"/Note{i - 1}.txt";
+                path.CurrentPath = path.CurrentDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
                 note.PathNote = path;
 
-                note = file.ReadNote(note);
+                note = noteRep.ReadNote(note.PathNote);
                 if (file.Find(betweenNote, note))
                 {
-                    recordNote.Location = new Point(0, (Settings.Default.CounterNotes - i) * recordNote.Height);
-                    recordNote.Text = note.Date.Date.ToString();
-                    Controls.Add(recordNote);
+                    records_Note.Add(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), note.Text));
                 }
-            }
 
+               
+            }
+            records_Note.Reverse();
+            records_Note.ForEach(x => groupBox_recordNote.Controls.Add(x)) ;
         }
-        private void CreateRecordNote()
+        private Button CreateRecordNote(Point pt, string text)
         {
-            recordNote.Margin = new Padding(4, 10, 4, 10);
-            recordNote.BackColor = Color.White;
-            recordNote.ForeColor = Color.Black;
-            recordNote.Dock = DockStyle.Top;
-            recordNote.TextAlign = ContentAlignment.TopLeft;
-            recordNote.AutoSize = true;
+            Button btn = new Button();
+
+            btn.FlatAppearance.BorderSize = 3;
+            btn.FlatAppearance.BorderColor = Color.Black;
+            btn.Height = recordNote_Height;
+            btn.Margin = new Padding(4, 20, 4, 20);
+            btn.Padding = new Padding(6);
+            btn.BackColor = Color.White;
+            btn.ForeColor = Color.Black;
+            btn.Dock = DockStyle.Top;
+            btn.TextAlign = ContentAlignment.TopLeft;
+            btn.AutoSize = false;
+            btn.Location = pt;
+            btn.Text = text;
+
+            return btn;
         }
     }
 }

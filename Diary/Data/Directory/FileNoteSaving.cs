@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Diary.Data.Entity;
 using Diary.Data.Interfaces;
+using Diary.Data.Notes;
 using Diary.SQL;
 
 namespace Diary.Data.Directory
@@ -30,19 +31,24 @@ namespace Diary.Data.Directory
             File.WriteAllText(note.PathNote.CurrentPath, note.Date + Environment.NewLine + note.Text);
         }
 
-        public override Note ReadNote(Services.Path note)
+        public override Note ReadNote(NotePath path)
         {
-            throw new NotImplementedException();
+            Note tmp = new Note();
+
+            tmp.PathNote = path;
+            tmp.Text = File.ReadAllText(path.CurrentPath);
+
+            return tmp;
         }
 
-        public override bool Find(IFindNote condition)
+        public override bool Find(IFindNote condition, Note note)
         {
-            throw new NotImplementedException();
+            return condition.Find(note);
         }
 
-        public override List<Note> Select(ISelectNote condition)
+        public override List<Note> Select(ISelectNote condition, Note note)
         {
-            throw new NotImplementedException();
+            return condition.Select(note);
         }
     }
 }
