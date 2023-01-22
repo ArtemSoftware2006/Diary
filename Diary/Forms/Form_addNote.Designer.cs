@@ -54,6 +54,7 @@
             // 
             // label_dateLabel
             // 
+            this.label_dateLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label_dateLabel.AutoSize = true;
             this.label_dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_dateLabel.Location = new System.Drawing.Point(3, 11);
@@ -65,6 +66,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
@@ -89,9 +91,9 @@
             this.panel3.Controls.Add(this.label_logo);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(13, 6);
+            this.panel3.Location = new System.Drawing.Point(14, 7);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(242, 49);
+            this.panel3.Size = new System.Drawing.Size(242, 48);
             this.panel3.TabIndex = 8;
             // 
             // label_logo
@@ -120,9 +122,9 @@
             // 
             this.panel1.Controls.Add(this.textBox_note);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(13, 116);
+            this.panel1.Location = new System.Drawing.Point(14, 117);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(669, 299);
+            this.panel1.Size = new System.Drawing.Size(667, 296);
             this.panel1.TabIndex = 6;
             // 
             // textBox_note
@@ -131,16 +133,16 @@
             this.textBox_note.Location = new System.Drawing.Point(0, 0);
             this.textBox_note.Multiline = true;
             this.textBox_note.Name = "textBox_note";
-            this.textBox_note.Size = new System.Drawing.Size(669, 299);
+            this.textBox_note.Size = new System.Drawing.Size(667, 296);
             this.textBox_note.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(13, 61);
+            this.panel2.Location = new System.Drawing.Point(14, 62);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(669, 49);
+            this.panel2.Size = new System.Drawing.Size(667, 48);
             this.panel2.TabIndex = 7;
             // 
             // panel5
@@ -148,13 +150,14 @@
             this.panel5.Controls.Add(this.label_dateLabel);
             this.panel5.Controls.Add(this.label_dateNow);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, -8);
+            this.panel5.Location = new System.Drawing.Point(0, -9);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(669, 57);
+            this.panel5.Size = new System.Drawing.Size(667, 57);
             this.panel5.TabIndex = 7;
             // 
             // label_dateNow
             // 
+            this.label_dateNow.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label_dateNow.AutoSize = true;
             this.label_dateNow.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_dateNow.Location = new System.Drawing.Point(109, 11);
@@ -168,13 +171,14 @@
             // 
             this.panel4.Controls.Add(this.tableLayoutPanel2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(13, 421);
+            this.panel4.Location = new System.Drawing.Point(14, 420);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(669, 64);
+            this.panel4.Size = new System.Drawing.Size(667, 64);
             this.panel4.TabIndex = 9;
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -187,14 +191,15 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(669, 64);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(667, 64);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // button_backonMain
             // 
-            this.button_backonMain.Location = new System.Drawing.Point(449, 3);
+            this.button_backonMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_backonMain.Location = new System.Drawing.Point(448, 4);
             this.button_backonMain.Name = "button_backonMain";
-            this.button_backonMain.Size = new System.Drawing.Size(217, 58);
+            this.button_backonMain.Size = new System.Drawing.Size(215, 56);
             this.button_backonMain.TabIndex = 2;
             this.button_backonMain.Text = "На главную";
             this.button_backonMain.UseVisualStyleBackColor = true;
@@ -202,9 +207,10 @@
             // 
             // button_reset
             // 
-            this.button_reset.Location = new System.Drawing.Point(226, 3);
+            this.button_reset.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_reset.Location = new System.Drawing.Point(226, 4);
             this.button_reset.Name = "button_reset";
-            this.button_reset.Size = new System.Drawing.Size(217, 58);
+            this.button_reset.Size = new System.Drawing.Size(215, 56);
             this.button_reset.TabIndex = 1;
             this.button_reset.Text = "Очистить";
             this.button_reset.UseVisualStyleBackColor = true;
@@ -212,9 +218,10 @@
             // 
             // button_addNote
             // 
-            this.button_addNote.Location = new System.Drawing.Point(3, 3);
+            this.button_addNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_addNote.Location = new System.Drawing.Point(4, 4);
             this.button_addNote.Name = "button_addNote";
-            this.button_addNote.Size = new System.Drawing.Size(217, 58);
+            this.button_addNote.Size = new System.Drawing.Size(215, 56);
             this.button_addNote.TabIndex = 0;
             this.button_addNote.Text = "Сохранить";
             this.button_addNote.UseVisualStyleBackColor = true;

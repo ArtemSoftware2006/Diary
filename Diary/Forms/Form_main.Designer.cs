@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.button_newNote = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button_showAllNotes = new System.Windows.Forms.Button();
             this.button_close = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -50,29 +49,19 @@
             this.button_newNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.button_newNote.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button_newNote.FlatAppearance.BorderSize = 3;
-            this.button_newNote.Location = new System.Drawing.Point(166, 214);
+            this.button_newNote.Location = new System.Drawing.Point(138, 213);
             this.button_newNote.Name = "button_newNote";
-            this.button_newNote.Size = new System.Drawing.Size(254, 58);
+            this.button_newNote.Size = new System.Drawing.Size(300, 75);
             this.button_newNote.TabIndex = 1;
             this.button_newNote.Text = "Новая запись";
             this.button_newNote.UseVisualStyleBackColor = false;
             this.button_newNote.Click += new System.EventHandler(this.button_newNote_Click);
             // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button2.Location = new System.Drawing.Point(166, 287);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(254, 58);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Последняя запись";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // button_showAllNotes
             // 
-            this.button_showAllNotes.Location = new System.Drawing.Point(166, 365);
+            this.button_showAllNotes.Location = new System.Drawing.Point(138, 300);
             this.button_showAllNotes.Name = "button_showAllNotes";
-            this.button_showAllNotes.Size = new System.Drawing.Size(254, 58);
+            this.button_showAllNotes.Size = new System.Drawing.Size(300, 75);
             this.button_showAllNotes.TabIndex = 3;
             this.button_showAllNotes.Text = "Все записи";
             this.button_showAllNotes.UseVisualStyleBackColor = true;
@@ -80,9 +69,9 @@
             // 
             // button_close
             // 
-            this.button_close.Location = new System.Drawing.Point(166, 438);
+            this.button_close.Location = new System.Drawing.Point(138, 386);
             this.button_close.Name = "button_close";
-            this.button_close.Size = new System.Drawing.Size(254, 58);
+            this.button_close.Size = new System.Drawing.Size(300, 75);
             this.button_close.TabIndex = 4;
             this.button_close.Text = "Выход";
             this.button_close.UseVisualStyleBackColor = true;
@@ -93,10 +82,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(607, 630);
+            this.ClientSize = new System.Drawing.Size(611, 671);
             this.Controls.Add(this.button_close);
             this.Controls.Add(this.button_showAllNotes);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button_newNote);
             this.Controls.Add(this.label1);
             this.Enabled = false;
@@ -115,7 +103,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_newNote;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button_showAllNotes;
         private System.Windows.Forms.Button button_close;
     }
