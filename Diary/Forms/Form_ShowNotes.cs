@@ -23,8 +23,9 @@ namespace Diary.Forms
         private NotePath path;
         private FileFindNotesBetween betweenNote;
         private List<Button> records_Note;
-        private const int counterNotesGroup = 7;
         private int recordNote_Height;
+        private int alsoShown;
+        private const int counterNotesGroup = 5;
         public Form_ShowNotes()
         {
             InitializeComponent();
@@ -34,32 +35,17 @@ namespace Diary.Forms
         {
             recordNote_Height = (panel_recordNotes.Height * (100 / counterNotesGroup))/100 + 10;
 
-            betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
-                - counterNotesGroup - 1, Settings.Default.CounterNotes);
             file = new FileNoteSaving();
             records_Note = new List<Button>();
             note = new Note();
             path = new NotePath();
+            alsoShown = 0;
 
             noteRep = file;
 
-            for (int i = 1; i < counterNotesGroup + 1; i++)
-            {
-                if (Settings.Default.CounterNotes - i > 0)
-                {
-                    path.CreateDirectory();
-                    path.CurrentPath = path.CurrentDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
-                    note.PathNote = path;
+            ShowNotes();
 
-                    note = noteRep.ReadNote(note.PathNote);
-                    if (file.Find(betweenNote, note))
-                    {
-                        records_Note.Add(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), note.Text));
-                    }
-                }
-            }
-            records_Note.Reverse();
-            records_Note.ForEach(x => panel_recordNotes.Controls.Add(x)) ;
+            this.ActiveControl = groupBox_recordNote.Controls[groupBox_recordNote.Controls.Count - 1];
         }
         private Button CreateRecordNote(Point pt, string text)
         {
@@ -79,6 +65,43 @@ namespace Diary.Forms
             btn.Text = text;
 
             return btn;
+        }
+
+        private void ShowNotes()
+        {
+            if (Settings.Default.CounterNotes - alsoShown >= 0)
+            {
+                betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
+                - counterNotesGroup - alsoShown - 1, Settings.Default.CounterNotes - alsoShown);
+
+                alsoShown += counterNotesGroup;
+
+                for (int i = 1; i < alsoShown + 1; i++)
+                {
+                    if (Settings.Default.CounterNotes - i > 0)
+                    {
+                        path.CreateDirectory();
+                        path.CurrentPath = path.CurrentDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
+                        note.PathNote = path;
+
+                        note = noteRep.ReadNote(note.PathNote);
+                        if (file.Find(betweenNote, note))
+                        {
+                            records_Note.Add(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), note.Text));
+                        }
+                    }
+                }
+                records_Note.Reverse();
+                records_Note.ForEach(x => panel_recordNotes.Controls.Add(x));
+            }
+        }
+
+        private void panel_recordNotes_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (panel_recordNotes.VerticalScroll.Value >= panel_recordNotes.VerticalScroll.Maximum - panel_recordNotes.ClientRectangle.Height + 1)
+            {
+                ShowNotes();
+            }
         }
     }
 }

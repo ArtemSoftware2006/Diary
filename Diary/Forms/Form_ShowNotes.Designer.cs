@@ -90,6 +90,7 @@
             this.panel_recordNotes.Name = "panel_recordNotes";
             this.panel_recordNotes.Size = new System.Drawing.Size(283, 650);
             this.panel_recordNotes.TabIndex = 0;
+            this.panel_recordNotes.Scroll += new System.Windows.Forms.ScrollEventHandler(this.panel_recordNotes_Scroll);
             // 
             // Form_ShowNotes
             // 
