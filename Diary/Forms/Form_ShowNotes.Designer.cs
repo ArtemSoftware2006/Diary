@@ -31,10 +31,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox_recordNote = new System.Windows.Forms.GroupBox();
             this.groupBox_showNote = new System.Windows.Forms.GroupBox();
+            this.panel_recordNotes = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox_recordNote.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -60,6 +62,7 @@
             // groupBox_recordNote
             // 
             this.groupBox_recordNote.BackColor = System.Drawing.Color.White;
+            this.groupBox_recordNote.Controls.Add(this.panel_recordNotes);
             this.groupBox_recordNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox_recordNote.Location = new System.Drawing.Point(0, 0);
             this.groupBox_recordNote.Name = "groupBox_recordNote";
@@ -79,6 +82,15 @@
             this.groupBox_showNote.TabStop = false;
             this.groupBox_showNote.Text = "Просмотр";
             // 
+            // panel_recordNotes
+            // 
+            this.panel_recordNotes.AutoScroll = true;
+            this.panel_recordNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_recordNotes.Location = new System.Drawing.Point(3, 26);
+            this.panel_recordNotes.Name = "panel_recordNotes";
+            this.panel_recordNotes.Size = new System.Drawing.Size(283, 650);
+            this.panel_recordNotes.TabIndex = 0;
+            // 
             // Form_ShowNotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -96,6 +108,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox_recordNote.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -105,5 +118,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox_recordNote;
         private System.Windows.Forms.GroupBox groupBox_showNote;
+        private System.Windows.Forms.Panel panel_recordNotes;
     }
 }

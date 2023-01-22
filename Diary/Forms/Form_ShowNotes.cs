@@ -23,7 +23,7 @@ namespace Diary.Forms
         private NotePath path;
         private FileFindNotesBetween betweenNote;
         private List<Button> records_Note;
-        private const int counterNotesGroup = 5;
+        private const int counterNotesGroup = 7;
         private int recordNote_Height;
         public Form_ShowNotes()
         {
@@ -32,7 +32,7 @@ namespace Diary.Forms
 
         private void Form_ShowNotes_Load(object sender, EventArgs e)
         {
-            recordNote_Height = (int)(groupBox_recordNote.Height * 0.2) - 5;
+            recordNote_Height = (panel_recordNotes.Height * (100 / counterNotesGroup))/100 + 10;
 
             betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
                 - counterNotesGroup - 1, Settings.Default.CounterNotes);
@@ -45,20 +45,21 @@ namespace Diary.Forms
 
             for (int i = 1; i < counterNotesGroup + 1; i++)
             {
-                path.CreateDirectory();
-                path.CurrentPath = path.CurrentDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
-                note.PathNote = path;
-
-                note = noteRep.ReadNote(note.PathNote);
-                if (file.Find(betweenNote, note))
+                if (Settings.Default.CounterNotes - i > 0)
                 {
-                    records_Note.Add(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), note.Text));
-                }
+                    path.CreateDirectory();
+                    path.CurrentPath = path.CurrentDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
+                    note.PathNote = path;
 
-               
+                    note = noteRep.ReadNote(note.PathNote);
+                    if (file.Find(betweenNote, note))
+                    {
+                        records_Note.Add(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), note.Text));
+                    }
+                }
             }
             records_Note.Reverse();
-            records_Note.ForEach(x => groupBox_recordNote.Controls.Add(x)) ;
+            records_Note.ForEach(x => panel_recordNotes.Controls.Add(x)) ;
         }
         private Button CreateRecordNote(Point pt, string text)
         {
