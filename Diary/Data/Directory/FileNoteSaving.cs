@@ -11,42 +11,38 @@ using Diary.SQL;
 
 namespace Diary.Data.Directory
 {
-    public class FileNoteSaving : INotesRepozitory , IFindNote , ISelectNote
-    {
-        public void CreateNote(Note note)
+    public class FileNoteSaving : NotesRepozitory
+    { 
+        
+        public override void CreateNote(Note note)
         {
             File.WriteAllText(note.PathNote.CurrentPath, note.Date.ToString() + Environment.NewLine);
             File.WriteAllText(note.PathNote.CurrentPath, note.Text);
         }
 
-        public void DeleteNote(Note note)
+        public override void DeleteNote(Note note)
         {
             File.Delete(note.PathNote.CurrentPath);
         }
 
-        public Note ReadNote(Note note)
-        {
-            Note tmp = new Note();
-
-            tmp.Date = new MySqlDateTime() { Date = File.ReadLines(note.PathNote.CurrentPath).First() };
-            tmp.Text =  String.Join(",",File.ReadAllText(note.PathNote.CurrentPath).Skip(1));
-
-            return tmp;
-        }
-
-        public bool Find(INoteSpecification specific, Note note)
-        {
-            return specific.Find(note);
-        }
-
-        public void UpdateNote(Note note)
+        public override void UpdateNote(Note note)
         {
             File.WriteAllText(note.PathNote.CurrentPath, note.Date + Environment.NewLine + note.Text);
         }
 
-        public Note Select(INoteSpecification spec, Note note)
+        public override Note ReadNote(Services.Path note)
         {
-             return spec.Select(note)
+            throw new NotImplementedException();
+        }
+
+        public override bool Find(IFindNote condition)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<Note> Select(ISelectNote condition)
+        {
+            throw new NotImplementedException();
         }
     }
 }

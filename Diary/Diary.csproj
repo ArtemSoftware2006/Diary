@@ -106,7 +106,7 @@
     <Compile Include="Data\Entity\Note.cs" />
     <Compile Include="Data\Interfaces\IDateTime.cs" />
     <Compile Include="Data\Interfaces\INoteSpecification.cs" />
-    <Compile Include="Data\Interfaces\INotesRepozitory.cs" />
+    <Compile Include="Data\Services\NotesRepozitory.cs" />
     <Compile Include="Data\Interfaces\IFindNote.cs" />
     <Compile Include="Data\Interfaces\ISelectNote.cs" />
     <Compile Include="Data\Interfaces\IUserRepozitory.cs" />

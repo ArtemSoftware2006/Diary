@@ -9,7 +9,7 @@ namespace Diary.Data.Interfaces
 {
     public interface ISelectNote
     {
-        Note Select(Note note);
+        List<Note> Select(Note note);
 
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Diary.Data.Directory
 {
-    internal class FindNoteAtPath : ISelectNote
+    internal class FindNoteAtPath 
     {
         public Note Select(Note note)
         {
