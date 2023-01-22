@@ -30,13 +30,13 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox_recordNote = new System.Windows.Forms.GroupBox();
-            this.groupBox_showNote = new System.Windows.Forms.GroupBox();
             this.panel_recordNotes = new System.Windows.Forms.Panel();
+            this.groupBox_showNote = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button_onMain = new System.Windows.Forms.Button();
+            this.button_delete = new System.Windows.Forms.Button();
+            this.button_redact = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -79,6 +79,16 @@
             this.groupBox_recordNote.TabStop = false;
             this.groupBox_recordNote.Text = "Ваши записи";
             // 
+            // panel_recordNotes
+            // 
+            this.panel_recordNotes.AutoScroll = true;
+            this.panel_recordNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_recordNotes.Location = new System.Drawing.Point(3, 26);
+            this.panel_recordNotes.Name = "panel_recordNotes";
+            this.panel_recordNotes.Size = new System.Drawing.Size(283, 650);
+            this.panel_recordNotes.TabIndex = 0;
+            this.panel_recordNotes.Scroll += new System.Windows.Forms.ScrollEventHandler(this.panel_recordNotes_Scroll);
+            // 
             // groupBox_showNote
             // 
             this.groupBox_showNote.BackColor = System.Drawing.Color.White;
@@ -90,16 +100,6 @@
             this.groupBox_showNote.TabIndex = 0;
             this.groupBox_showNote.TabStop = false;
             this.groupBox_showNote.Text = "Просмотр";
-            // 
-            // panel_recordNotes
-            // 
-            this.panel_recordNotes.AutoScroll = true;
-            this.panel_recordNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_recordNotes.Location = new System.Drawing.Point(3, 26);
-            this.panel_recordNotes.Name = "panel_recordNotes";
-            this.panel_recordNotes.Size = new System.Drawing.Size(283, 650);
-            this.panel_recordNotes.TabIndex = 0;
-            this.panel_recordNotes.Scroll += new System.Windows.Forms.ScrollEventHandler(this.panel_recordNotes_Scroll);
             // 
             // tableLayoutPanel1
             // 
@@ -123,9 +123,9 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.button3, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button2, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button_onMain, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button_delete, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button_redact, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 564);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -134,35 +134,36 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(550, 72);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // button1
+            // button_onMain
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 64);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Редактировать";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_onMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_onMain.Location = new System.Drawing.Point(370, 4);
+            this.button_onMain.Name = "button_onMain";
+            this.button_onMain.Size = new System.Drawing.Size(176, 64);
+            this.button_onMain.TabIndex = 2;
+            this.button_onMain.Text = "На главную";
+            this.button_onMain.UseVisualStyleBackColor = true;
+            this.button_onMain.Click += new System.EventHandler(this.button_onMain_Click);
             // 
-            // button2
+            // button_delete
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(187, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(176, 64);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Удалить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_delete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_delete.Location = new System.Drawing.Point(187, 4);
+            this.button_delete.Name = "button_delete";
+            this.button_delete.Size = new System.Drawing.Size(176, 64);
+            this.button_delete.TabIndex = 1;
+            this.button_delete.Text = "Удалить";
+            this.button_delete.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button_redact
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(370, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 64);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "На главную";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_redact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_redact.Location = new System.Drawing.Point(4, 4);
+            this.button_redact.Name = "button_redact";
+            this.button_redact.Size = new System.Drawing.Size(176, 64);
+            this.button_redact.TabIndex = 0;
+            this.button_redact.Text = "Редактировать";
+            this.button_redact.UseVisualStyleBackColor = true;
             // 
             // Form_ShowNotes
             // 
@@ -197,8 +198,8 @@
         private System.Windows.Forms.Panel panel_recordNotes;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_onMain;
+        private System.Windows.Forms.Button button_delete;
+        private System.Windows.Forms.Button button_redact;
     }
 }

@@ -19,7 +19,7 @@ namespace Diary.Forms
     {
         private NotesRepozitory noteRep;
         private FileNoteSaving file;
-        private Note note;
+        private List<Note> ListNotes;
         private NotePath path;
         private FileFindNotesBetween betweenNote;
         private Stack<Button> ListRecords_Note;
@@ -37,7 +37,7 @@ namespace Diary.Forms
 
             file = new FileNoteSaving();
             ListRecords_Note = new Stack<Button>();
-            note = new Note();
+            ListNotes = new List<Note>();
             path = new NotePath();
             alsoShown = 0;
 
@@ -70,12 +70,11 @@ namespace Diary.Forms
                     {
                         path.CreateDirectory();
                         path.CurrentPath = path.CurrentDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
-                        note.PathNote = path;
 
-                        note = noteRep.ReadNote(note.PathNote);
-                        if (file.Find(betweenNote, note))
+                        ListNotes.Add(noteRep.ReadNote(path));
+                        if (file.Find(betweenNote, ListNotes[i - 1]))
                         {
-                            ListRecords_Note.Push(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), note.Text));
+                            ListRecords_Note.Push(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), ListNotes[i - 1].Text));
                         }
                     }
                 }
@@ -108,6 +107,11 @@ namespace Diary.Forms
             {
                 panel_recordNotes.Controls.Add(note);
             }
+        }
+
+        private void button_onMain_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
