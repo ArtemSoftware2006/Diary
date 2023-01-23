@@ -13,15 +13,17 @@ namespace Diary.Data.Directory
     {
         public int StartNumber { get; set; }
         public int StopNumber { get; set; }
-        public FileFindNotesBetween(int startNumber, int stopNumber)
+        public Note CurrentNote { get; set; }
+        public FileFindNotesBetween(int startNumber, int stopNumber, Note note)
         {
             this.StartNumber = startNumber;
             this.StopNumber = stopNumber;
+            this.CurrentNote = note;
         }
 
-        public bool Find(Note note)
+        public bool Find()
         {
-            int count = int.Parse(Path.GetFileNameWithoutExtension(note.PathNote.CurrentPath).ToString().Substring(4));
+            int count = int.Parse(Path.GetFileNameWithoutExtension(CurrentNote.PathNote.CurrentPath).ToString().Substring(4));
             return (StartNumber < count) && (StopNumber > count);
         }
     }

@@ -10,6 +10,6 @@ namespace Diary.Data.Interfaces
 {
     public interface IFindNote
     {
-        bool Find(Note note);
+        bool Find();
     }
 }

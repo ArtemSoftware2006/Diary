@@ -14,7 +14,11 @@ namespace Diary.Data.Directory
 {
     public class FileNoteSaving : NotesRepozitory
     { 
-        
+        public FileNoteSaving() { } 
+        public FileNoteSaving(Note note)
+        {
+            CurrentNote= note;
+        }
         public override void CreateNote(Note note)
         {
             File.WriteAllText(note.PathNote.CurrentPath, note.Date.ToString() + Environment.NewLine);
@@ -30,25 +34,14 @@ namespace Diary.Data.Directory
         {
             File.WriteAllText(note.PathNote.CurrentPath, note.Date + Environment.NewLine + note.Text);
         }
-
-        public override Note ReadNote(NotePath path)
+        public override bool Find(IFindNote condition)
         {
-            Note tmp = new Note();
-
-            tmp.PathNote = path;
-            tmp.Text = File.ReadAllText(path.CurrentPath);
-
-            return tmp;
+            return condition.Find();
         }
 
-        public override bool Find(IFindNote condition, Note note)
+        public override List<Note> Select(ISelectNote condition)
         {
-            return condition.Find(note);
-        }
-
-        public override List<Note> Select(ISelectNote condition, Note note)
-        {
-            return condition.Select(note);
+            return condition.Select();
         }
     }
 }

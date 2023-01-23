@@ -100,9 +100,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Note\Directory\FileNoteSaving.cs" />
-    <Compile Include="Data\Note\Directory\FileUserSaving.cs" />
+    <Compile Include="Data\User\FileUserSaving.cs" />
     <Compile Include="Data\Note\Directory\FileFindNotesBetween.cs" />
-    <Compile Include="Data\Note\FindNoteAtPath.cs" />
+    <Compile Include="Data\Note\Directory\FindNoteAtPath.cs" />
     <Compile Include="Data\Entity\Note.cs" />
     <Compile Include="Data\Date\IDateTime.cs" />
     <Compile Include="Data\Note\NotesRepozitory.cs" />
