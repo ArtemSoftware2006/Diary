@@ -11,6 +11,6 @@ namespace Diary.Data.Services
         public string PathDirectory { get; protected set; }
         public string PathFile { get; set; }
         public virtual void CreateNewPath() { }
-        public virtual void CreateDirectory() { }
+        public virtual void CreateNewDirectory() { }
     }
 }

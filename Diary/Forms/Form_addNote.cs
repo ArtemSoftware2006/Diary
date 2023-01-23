@@ -1,6 +1,8 @@
 ﻿using Diary.Data.Directory;
 using Diary.Data.Entity;
 using Diary.Data.Interfaces;
+using Diary.Data.NoteDirectory.Directory;
+using Diary.Data.NoteDirectory.Directory.Tools;
 using Diary.Data.Notes;
 using Diary.Data.Services;
 using Diary.Properties;
@@ -26,6 +28,8 @@ namespace Diary.Forms
         private NotePath pathNotes = new NotePath();
         private FileNoteSaving fileNoteSaving = new FileNoteSaving();
         private Note currentNote = new Note();
+        private NoteTextFile fileText = new NoteTextFile();
+        private NotePropertyFile fileProperty = new NotePropertyFile();
         public Form_addNote()
         {
             InitializeComponent();
@@ -37,14 +41,14 @@ namespace Diary.Forms
             {
                 try
                 {
-                    pathNotes.CreateDirectory();
-
-                    if (!Directory.Exists(pathNotes.PathDirectory))
+                    if (!Directory.Exists(Application.StartupPath + "\\Notes"))
                     {
-                        Directory.CreateDirectory(pathNotes.PathDirectory);
+                        Directory.CreateDirectory(Application.StartupPath + "\\Notes");
                     }
 
+                    pathNotes.CreateNewDirectory();
                     pathNotes.CreateNewPath();
+
                     dt.ConvertDate(DateTime.Now);
 
                     currentNote.Text = textBox_note.Text;
