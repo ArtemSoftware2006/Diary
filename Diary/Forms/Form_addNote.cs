@@ -24,9 +24,6 @@ namespace Diary.Forms
 {
     public partial class Form_addNote : Form
     {
-        string filePropertyName;
-        string fileTextName;
-        string directoryName;
         IDateTime dt = new MySqlDateTime();
         private NotePath pathNotes = new NotePath();
         private Note currentNote = new Note();
@@ -47,12 +44,9 @@ namespace Diary.Forms
                     {
                         Directory.CreateDirectory(Application.StartupPath + "\\Notes");
                     }
-                    filePropertyName = $"noteProperty{Settings.Default.CounterNotes}.txt";
-                    fileTextName = $"noteText{Settings.Default.CounterNotes}.txt";
-                    directoryName = $"Note{Settings.Default.CounterNotes}";
 
-                    pathNotes.CreateNewDirectory(directoryName);
-                    pathNotes.CreateNewPath(filePropertyName);
+                    pathNotes.CreateNewDirectory(FileNames.CreatePathDirectoryName(Settings.Default.CounterNotes.ToString()));
+                    pathNotes.CreateNewPath(FileNames.CreatePathFileProperty(Settings.Default.CounterNotes.ToString() + ".txt"));
 
                     dt.ConvertDate(DateTime.Now);
 
@@ -61,7 +55,7 @@ namespace Diary.Forms
                     currentNote.Date = dt;
                     currentNote.UserId = Person.IdUser; 
 
-                    pathNotes.CreateNewPath(fileTextName);
+                    pathNotes.CreateNewPath(FileNames.CreatePathFileText(Settings.Default.CounterNotes.ToString() + ".txt"));
 
                     fileProperty.Create(currentNote);
                     fileText.Create(pathNotes, textBox_note.Text);

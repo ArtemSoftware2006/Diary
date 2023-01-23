@@ -112,6 +112,7 @@
     <Compile Include="Data\NoteDirectory\ISelectNote.cs" />
     <Compile Include="Data\User\IUserRepozitory.cs" />
     <Compile Include="Data\Services\MyPath.cs" />
+    <Compile Include="FileNames.cs" />
     <Compile Include="Forms\Form_showNotes.cs">
       <SubType>Form</SubType>
     </Compile>

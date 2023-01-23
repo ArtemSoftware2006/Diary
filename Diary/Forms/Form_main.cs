@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Diary.Data.Notes;
 using Diary.Forms;
+using Diary.Properties;
 using MySql.Data.MySqlClient;
 
 namespace Diary
@@ -37,10 +38,14 @@ namespace Diary
 
 
         private void Form_main_Load(object sender, EventArgs e)
-        { 
-             Form_entrance fm = new Form_entrance();
-             fm.TopMost = true;
-             fm.Show();
+        {
+            FileNames.FilePropertyName = $"noteProperty";
+            FileNames.FileTextName = $"noteText";
+            FileNames.DirectoryName = $"Note";
+
+            Form_entrance fm = new Form_entrance();
+            fm.TopMost = true;
+            fm.Show();
         }
 
 

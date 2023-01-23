@@ -1,6 +1,8 @@
 ﻿using Diary.Data.Directory;
 using Diary.Data.Entity;
 using Diary.Data.Interfaces;
+using Diary.Data.NoteDirectory.Directory;
+using Diary.Data.NoteDirectory.Directory.Tools;
 using Diary.Data.Notes;
 using Diary.Data.Services;
 using Diary.Properties;
@@ -21,8 +23,9 @@ namespace Diary.Forms
         private int recordNote_Height;
         private int alsoShown;
         private const int counterNotesGroup = 5;
-        //private AbstractNotesRepozitory noteRep;
-       // private FileNoteSaving file;
+        private string directoryName;
+        private NoteTextFile noteTextFile;
+        private NotePropertyFile notePropertyFile;
         private NotePath path;
         private FileFindNotesBetween betweenNote;
         private SelectNoteAtPath findNoteAtPath;
@@ -33,7 +36,10 @@ namespace Diary.Forms
         {
             InitializeComponent();
 
-            //file = new FileNoteSaving();
+            directoryName = $"Note{Settings.Default.CounterNotes}";
+
+            noteTextFile = new NoteTextFile();
+            notePropertyFile = new NotePropertyFile();
             ListRecords_Note = new Stack<Button>();
             ListNotes = new List<Note>();
             path = new NotePath();
@@ -66,8 +72,8 @@ namespace Diary.Forms
                 {
                     if (Settings.Default.CounterNotes - i > 0)
                     {
-                       // path.CreateNewDirectory();
-                        //path.PathFile = path.PathDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
+                        path.CreateNewDirectory(directoryName);
+                        path.CreateNewPath(FileNames.FilePropertyName);
 
                         //betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
                            //  - counterNotesGroup - alsoShown - 1, Settings.Default.CounterNotes - alsoShown, new Note() { PathNote = path });
