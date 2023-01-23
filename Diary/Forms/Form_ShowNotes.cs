@@ -66,7 +66,7 @@ namespace Diary.Forms
                 {
                     if (Settings.Default.CounterNotes - i > 0)
                     {
-                        path.CreateDirectory();
+                        path.CreateNewDirectory();
                         path.PathFile = path.PathDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
 
                         betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes

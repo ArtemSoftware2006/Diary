@@ -109,7 +109,6 @@
     <Compile Include="Data\NoteDirectory\Directory\Tools\SelecttNoteAtPath.cs" />
     <Compile Include="Data\Entity\Note.cs" />
     <Compile Include="Data\Date\IDateTime.cs" />
-    <Compile Include="Data\NoteDirectory\AbstractNotesRepozitory.cs" />
     <Compile Include="Data\NoteDirectory\IFindNote.cs" />
     <Compile Include="Data\NoteDirectory\ISelectNote.cs" />
     <Compile Include="Data\User\IUserRepozitory.cs" />
