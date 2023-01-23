@@ -24,9 +24,11 @@ namespace Diary.Forms
 {
     public partial class Form_addNote : Form
     {
+        string filePropertyName;
+        string fileTextName;
+        string directoryName;
         IDateTime dt = new MySqlDateTime();
         private NotePath pathNotes = new NotePath();
-        private FileNoteSaving fileNoteSaving = new FileNoteSaving();
         private Note currentNote = new Note();
         private NoteTextFile fileText = new NoteTextFile();
         private NotePropertyFile fileProperty = new NotePropertyFile();
@@ -45,18 +47,24 @@ namespace Diary.Forms
                     {
                         Directory.CreateDirectory(Application.StartupPath + "\\Notes");
                     }
+                    filePropertyName = $"noteProperty{Settings.Default.CounterNotes}.txt";
+                    fileTextName = $"noteText{Settings.Default.CounterNotes}.txt";
+                    directoryName = $"Note{Settings.Default.CounterNotes}";
 
-                    pathNotes.CreateNewDirectory();
-                    pathNotes.CreateNewPath();
+                    pathNotes.CreateNewDirectory(directoryName);
+                    pathNotes.CreateNewPath(filePropertyName);
 
                     dt.ConvertDate(DateTime.Now);
 
-                    currentNote.Text = textBox_note.Text;
-                    currentNote.PathNote = pathNotes;
+                    currentNote.Id = Settings.Default.CounterNotes;
+                    currentNote.PathNote = pathNotes.PathFile;
                     currentNote.Date = dt;
-                    currentNote.UserId = Person.IdUser; // Тонкое место Не реализовал класс Person по всем интерфейсам
+                    currentNote.UserId = Person.IdUser; 
 
-                    fileNoteSaving.CreateNote(currentNote);
+                    pathNotes.CreateNewPath(fileTextName);
+
+                    fileProperty.Create(currentNote);
+                    fileText.Create(pathNotes, textBox_note.Text);
 
                     Settings.Default.CounterNotes++;
                     Settings.Default.Save();

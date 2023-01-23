@@ -25,18 +25,6 @@ namespace Diary.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int CounterNotes {
-            get {
-                return ((int)(this["CounterNotes"]));
-            }
-            set {
-                this["CounterNotes"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string PathToNote {
             get {
@@ -44,6 +32,18 @@ namespace Diary.Properties {
             }
             set {
                 this["PathToNote"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CounterNotes {
+            get {
+                return ((int)(this["CounterNotes"]));
+            }
+            set {
+                this["CounterNotes"] = value;
             }
         }
     }

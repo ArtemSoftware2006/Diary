@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Diary.Data.Directory
 {
-    public class FileUserSaving :
+    public class FileUserSaving 
     {
 
     }

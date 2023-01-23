@@ -23,7 +23,7 @@ namespace Diary.Data.Directory
 
         public bool Find()
         {
-            int count = int.Parse(Path.GetFileNameWithoutExtension(CurrentNote.PathNote.PathFile).ToString().Substring(4));
+            int count = int.Parse(Path.GetFileNameWithoutExtension(CurrentNote.PathNote).ToString().Substring(4));
             return (StartNumber < count) && (StopNumber > count);
         }
     }

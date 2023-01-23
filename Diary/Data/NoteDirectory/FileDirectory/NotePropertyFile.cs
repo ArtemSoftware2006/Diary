@@ -13,7 +13,7 @@ namespace Diary.Data.NoteDirectory.Directory.Tools
     {
         public override void Delete(Note note)
         {
-            File.Delete(note.PathNote.PathFile);
+            File.Delete(note.PathNote);
         }
 
         public override bool Find(IFindNote condition)
@@ -21,9 +21,9 @@ namespace Diary.Data.NoteDirectory.Directory.Tools
             return condition.Find();
         }
 
-        public override void Save(Note note)
+        public override void Create(Note note)
         {
-            File.WriteAllText(note.PathNote.PathFile,note.Id.ToString() + " " + note.PathNote.PathFile + " " 
+            File.WriteAllText(note.PathNote,note.Id.ToString() + " " + note.PathNote + " " 
                 + note.Date.Date.ToString() + " " + note.UserId.ToString());
         }
 
@@ -34,7 +34,7 @@ namespace Diary.Data.NoteDirectory.Directory.Tools
 
         public override void Update(Note note)
         {
-            File.WriteAllText(note.PathNote.PathFile, note.Id.ToString() + " " + note.PathNote.PathFile + " "
+            File.WriteAllText(note.PathNote, note.Id.ToString() + " " + note.PathNote + " "
                 + note.Date.Date.ToString() + " " + note.UserId.ToString());
         }
     }

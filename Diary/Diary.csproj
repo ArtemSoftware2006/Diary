@@ -101,12 +101,11 @@
   <ItemGroup>
     <Compile Include="Data\NoteDirectory\AbstractNoteProperty.cs" />
     <Compile Include="Data\NoteDirectory\AbstractNoteText.cs" />
-    <Compile Include="Data\NoteDirectory\Directory\FileNoteSaving.cs" />
-    <Compile Include="Data\NoteDirectory\Directory\NotePropertyFile.cs" />
-    <Compile Include="Data\NoteDirectory\Directory\NoteTextFile.cs" />
+    <Compile Include="Data\NoteDirectory\FileDirectory\NotePropertyFile.cs" />
+    <Compile Include="Data\NoteDirectory\FileDirectory\NoteTextFile.cs" />
     <Compile Include="Data\User\Directory\FileUserSaving.cs" />
-    <Compile Include="Data\NoteDirectory\Directory\Tools\FileFindNotesBetween.cs" />
-    <Compile Include="Data\NoteDirectory\Directory\Tools\SelecttNoteAtPath.cs" />
+    <Compile Include="Data\NoteDirectory\FileDirectory\Tools\FileFindNotesBetween.cs" />
+    <Compile Include="Data\NoteDirectory\FileDirectory\Tools\SelecttNoteAtPath.cs" />
     <Compile Include="Data\Entity\Note.cs" />
     <Compile Include="Data\Date\IDateTime.cs" />
     <Compile Include="Data\NoteDirectory\IFindNote.cs" />

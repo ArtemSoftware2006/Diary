@@ -7,19 +7,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel;
 using Diary.Data.Services;
+using System.IO;
 
 namespace Diary.Data.Notes
 {
     public class NotePath : MyPath
     {
 
-        public override void CreateNewPath()
+        public override void CreateNewPath(string name)
         {
-            PathFile = PathDirectory + "\\Notes + " + Settings.Default.CounterNotes.ToString() + ".txt";
+            PathFile = PathDirectory + $"{name}";
         }
-        public override void CreateNewDirectory()
+        public override void CreateNewDirectory(string name)
         {
-            PathDirectory = Application.StartupPath + "\\Notes + \\Note" + Settings.Default.CounterNotes.ToString();
+            PathDirectory = Application.StartupPath + $"\\Notes\\{name}\\";
+            System.IO.Directory.CreateDirectory(PathDirectory);
         }
+
     }
 }

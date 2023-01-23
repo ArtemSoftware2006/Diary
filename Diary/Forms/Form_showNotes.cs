@@ -21,8 +21,8 @@ namespace Diary.Forms
         private int recordNote_Height;
         private int alsoShown;
         private const int counterNotesGroup = 5;
-        private AbstractNotesRepozitory noteRep;
-        private FileNoteSaving file;
+        //private AbstractNotesRepozitory noteRep;
+       // private FileNoteSaving file;
         private NotePath path;
         private FileFindNotesBetween betweenNote;
         private SelectNoteAtPath findNoteAtPath;
@@ -33,7 +33,7 @@ namespace Diary.Forms
         {
             InitializeComponent();
 
-            file = new FileNoteSaving();
+            //file = new FileNoteSaving();
             ListRecords_Note = new Stack<Button>();
             ListNotes = new List<Note>();
             path = new NotePath();
@@ -66,19 +66,19 @@ namespace Diary.Forms
                 {
                     if (Settings.Default.CounterNotes - i > 0)
                     {
-                        path.CreateNewDirectory();
-                        path.PathFile = path.PathDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
+                       // path.CreateNewDirectory();
+                        //path.PathFile = path.PathDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
 
-                        betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
-                             - counterNotesGroup - alsoShown - 1, Settings.Default.CounterNotes - alsoShown, new Note() { PathNote = path });
+                        //betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
+                           //  - counterNotesGroup - alsoShown - 1, Settings.Default.CounterNotes - alsoShown, new Note() { PathNote = path });
 
-                        findNoteAtPath = new SelectNoteAtPath( new Note() { PathNote = path });
+                        //findNoteAtPath = new SelectNoteAtPath( new Note() { PathNote = path });
 
-                        if (file.Find(betweenNote));
-                        {
-                            findNoteAtPath.Select().ForEach(x => ListNotes.Add(x));
-                            ListRecords_Note.Push(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), ListNotes[i - 1].Text , i - 1));
-                        }
+                        //if (file.Find(betweenNote));
+                        //{
+                        //    findNoteAtPath.Select().ForEach(x => ListNotes.Add(x));
+                        //    ListRecords_Note.Push(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), ListNotes[i - 1].Text , i - 1));
+                        //}
                     }
                 }
                 AddNotesInGroupBox();
@@ -108,7 +108,7 @@ namespace Diary.Forms
 
         private void BtnNote_click(object sender, EventArgs e)
         {
-            textBox_noteText.Text = ListNotes[Convert.ToInt32((sender as Button).Name)].Text;
+            //textBox_noteText.Text = ListNotes[Convert.ToInt32((sender as Button).Name)].Text;
         }
 
         private void AddNotesInGroupBox()
