@@ -10,7 +10,7 @@ using Diary.Data.Services;
 
 namespace Diary.Data.Notes
 {
-    public class NotePath : Path
+    public class NotePath : MyPath
     {
 
         public override void CreateNewPath()

@@ -10,8 +10,8 @@ namespace Diary.Data.NoteDirectory
 {
     abstract public class AbstractNoteText
     {
-        abstract public void Create(string textNote);
-        abstract public void Delete(Path pathNote);
-        abstract public void Update(string textNote);
+        abstract public void Create(MyPath path, string textNote);
+        abstract public void Delete(MyPath pathNote);
+        abstract public void Update(MyPath path,string textNote);
     }
 }

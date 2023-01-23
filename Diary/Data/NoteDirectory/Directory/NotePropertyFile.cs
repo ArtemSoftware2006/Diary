@@ -23,7 +23,8 @@ namespace Diary.Data.NoteDirectory.Directory.Tools
 
         public override void Update(Note note)
         {
-            throw new NotImplementedException();
+            File.WriteAllText(note.PathNote.PathFile, note.Id.ToString() + " " + note.PathNote.PathFile + " "
+                + note.Date.Date.ToString() + " " + note.UserId.ToString());
         }
     }
 }

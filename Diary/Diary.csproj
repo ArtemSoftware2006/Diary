@@ -102,7 +102,8 @@
     <Compile Include="Data\NoteDirectory\AbstractNoteProperty.cs" />
     <Compile Include="Data\NoteDirectory\AbstractNoteText.cs" />
     <Compile Include="Data\NoteDirectory\Directory\FileNoteSaving.cs" />
-    <Compile Include="Data\NoteDirectory\Directory\Tools\NotePropertyFile.cs" />
+    <Compile Include="Data\NoteDirectory\Directory\NotePropertyFile.cs" />
+    <Compile Include="Data\NoteDirectory\Directory\NoteTextFile.cs" />
     <Compile Include="Data\User\Directory\FileUserSaving.cs" />
     <Compile Include="Data\NoteDirectory\Directory\Tools\FileFindNotesBetween.cs" />
     <Compile Include="Data\NoteDirectory\Directory\Tools\SelecttNoteAtPath.cs" />
@@ -112,7 +113,7 @@
     <Compile Include="Data\NoteDirectory\IFindNote.cs" />
     <Compile Include="Data\NoteDirectory\ISelectNote.cs" />
     <Compile Include="Data\User\IUserRepozitory.cs" />
-    <Compile Include="Data\Services\Path.cs" />
+    <Compile Include="Data\Services\MyPath.cs" />
     <Compile Include="Forms\Form_showNotes.cs">
       <SubType>Form</SubType>
     </Compile>
