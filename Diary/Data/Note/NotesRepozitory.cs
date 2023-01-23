@@ -12,7 +12,6 @@ namespace Diary.Data.Interfaces
 {
     public abstract class NotesRepozitory
     {
-        public Note CurrentNote { get; set; }
         protected IFindNote findNote;
         protected ISelectNote selectNote;
         abstract public void CreateNote(Note note);

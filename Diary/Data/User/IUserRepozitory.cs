@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Diary.Data.Interfaces
 {
-    internal interface IUserRepozitory
+    abstract class UserRepozitory
     {
-        void CreateUser(Person user);
-        void DeleteUser(Person user);
-        Person ReadtUser(Person user);
+        
     }
 }

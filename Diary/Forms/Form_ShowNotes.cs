@@ -25,6 +25,7 @@ namespace Diary.Forms
         private FileNoteSaving file;
         private NotePath path;
         private FileFindNotesBetween betweenNote;
+        private SelectNoteAtPath findNoteAtPath;
         private List<Note> ListNotes;
         private Stack<Button> ListRecords_Note;
 
@@ -59,9 +60,6 @@ namespace Diary.Forms
         {
             if (Settings.Default.CounterNotes - alsoShown >= 0)
             {
-                betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
-                - counterNotesGroup - alsoShown - 1, Settings.Default.CounterNotes - alsoShown);
-
                 alsoShown += counterNotesGroup;
 
                 for (int i = alsoShown - counterNotesGroup + 1; i < alsoShown + 1; i++)
@@ -71,9 +69,14 @@ namespace Diary.Forms
                         path.CreateDirectory();
                         path.CurrentPath = path.CurrentDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
 
-                        if (file.Find(betweenNote, new Note() { PathNote = path }));
+                        betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
+                             - counterNotesGroup - alsoShown - 1, Settings.Default.CounterNotes - alsoShown, new Note() { PathNote = path });
+
+                        findNoteAtPath = new SelectNoteAtPath( new Note() { PathNote = path });
+
+                        if (file.Find(betweenNote));
                         {
-                            ListNotes.Add(noteRep.ReadNote(path));
+                            findNoteAtPath.Select().ForEach(x => ListNotes.Add(x));
                             ListRecords_Note.Push(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), ListNotes[i - 1].Text , i - 1));
                         }
                     }

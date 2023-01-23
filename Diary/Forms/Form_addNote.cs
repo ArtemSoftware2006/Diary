@@ -24,7 +24,7 @@ namespace Diary.Forms
     {
         IDateTime dt = new MySqlDateTime();
         private NotePath pathNotes = new NotePath();
-        private FileNoteSaving file = new FileNoteSaving();
+        private FileNoteSaving fileNoteSaving = new FileNoteSaving();
         private Note currentNote = new Note();
         public Form_addNote()
         {
@@ -52,7 +52,7 @@ namespace Diary.Forms
                     currentNote.Date = dt;
                     currentNote.UserId = Person.IdUser; // Тонкое место Не реализовал класс Person по всем интерфейсам
 
-                    file.CreateNote(currentNote);
+                    fileNoteSaving.CreateNote(currentNote);
 
                     Settings.Default.CounterNotes++;
                     Settings.Default.Save();

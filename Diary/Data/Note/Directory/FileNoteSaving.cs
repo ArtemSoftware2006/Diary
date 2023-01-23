@@ -14,11 +14,6 @@ namespace Diary.Data.Directory
 {
     public class FileNoteSaving : NotesRepozitory
     { 
-        public FileNoteSaving() { } 
-        public FileNoteSaving(Note note)
-        {
-            CurrentNote= note;
-        }
         public override void CreateNote(Note note)
         {
             File.WriteAllText(note.PathNote.CurrentPath, note.Date.ToString() + Environment.NewLine);
