@@ -21,8 +21,11 @@ namespace Diary.Data.Notes
         public override void CreateNewDirectory(string name)
         {
             PathDirectory = Application.StartupPath + $"\\Notes\\{name}\\";
-            System.IO.Directory.CreateDirectory(PathDirectory);
-        }
+            if (!System.IO.Directory.Exists(PathDirectory))
+            {
+                System.IO.Directory.CreateDirectory(PathDirectory);
 
+            }
+        }
     }
 }

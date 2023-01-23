@@ -105,7 +105,7 @@
     <Compile Include="Data\NoteDirectory\FileDirectory\NoteTextFile.cs" />
     <Compile Include="Data\User\Directory\FileUserSaving.cs" />
     <Compile Include="Data\NoteDirectory\FileDirectory\Tools\FileFindNotesBetween.cs" />
-    <Compile Include="Data\NoteDirectory\FileDirectory\Tools\SelecttNoteAtPath.cs" />
+    <Compile Include="Data\NoteDirectory\FileDirectory\Tools\SelecttNoteByID.cs" />
     <Compile Include="Data\Entity\Note.cs" />
     <Compile Include="Data\Date\IDateTime.cs" />
     <Compile Include="Data\NoteDirectory\IFindNote.cs" />

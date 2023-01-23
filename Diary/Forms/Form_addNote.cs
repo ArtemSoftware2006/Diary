@@ -25,7 +25,8 @@ namespace Diary.Forms
     public partial class Form_addNote : Form
     {
         IDateTime dt = new MySqlDateTime();
-        private NotePath pathNotes = new NotePath();
+        private NotePath pathProperty = new NotePath();
+        private NotePath pathText = new NotePath();
         private Note currentNote = new Note();
         private NoteTextFile fileText = new NoteTextFile();
         private NotePropertyFile fileProperty = new NotePropertyFile();
@@ -45,20 +46,21 @@ namespace Diary.Forms
                         Directory.CreateDirectory(Application.StartupPath + "\\Notes");
                     }
 
-                    pathNotes.CreateNewDirectory(FileNames.CreatePathDirectoryName(Settings.Default.CounterNotes.ToString()));
-                    pathNotes.CreateNewPath(FileNames.CreatePathFileProperty(Settings.Default.CounterNotes.ToString() + ".txt"));
+                    pathProperty.CreateNewDirectory(FileNames.CreatePathDirectoryName(Settings.Default.CounterNotes.ToString()));
+                    pathProperty.CreateNewPath(FileNames.CreatePathFileProperty(Settings.Default.CounterNotes.ToString() + ".txt"));
+                    pathText.CreateNewDirectory(FileNames.CreatePathDirectoryName(Settings.Default.CounterNotes.ToString()));
+                    pathText.CreateNewPath(FileNames.CreatePathFileText(Settings.Default.CounterNotes.ToString() + ".txt"));
+
 
                     dt.ConvertDate(DateTime.Now);
 
                     currentNote.Id = Settings.Default.CounterNotes;
-                    currentNote.PathNote = pathNotes.PathFile;
+                    currentNote.PathNote = pathText.PathFile;
                     currentNote.Date = dt;
                     currentNote.UserId = Person.IdUser; 
 
-                    pathNotes.CreateNewPath(FileNames.CreatePathFileText(Settings.Default.CounterNotes.ToString() + ".txt"));
-
-                    fileProperty.Create(currentNote);
-                    fileText.Create(pathNotes, textBox_note.Text);
+                    fileProperty.Create(currentNote, pathProperty.PathFile);
+                    fileText.Create(pathText, textBox_note.Text);
 
                     Settings.Default.CounterNotes++;
                     Settings.Default.Save();

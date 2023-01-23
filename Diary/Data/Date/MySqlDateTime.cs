@@ -11,6 +11,12 @@ namespace Diary.SQL
     {
         public string Date { get ; set ; }
 
+        public MySqlDateTime() { }
+        public MySqlDateTime(string date)
+        {
+            Date = date;
+        }
+
         public void ConvertDate(DateTime datetime)
         {
             Date = datetime.Year.ToString() + "-" + datetime.Month.ToString() + "-" + datetime.Day.ToString()

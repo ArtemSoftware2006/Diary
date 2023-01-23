@@ -10,6 +10,10 @@ namespace Diary.Data.NoteDirectory.Directory
 {
     public class NoteTextFile : AbstractNoteText
     {
+        public string Read(string path)
+        {
+            return File.ReadAllText(path);
+        }
         public override void Create(MyPath path,string textNote)
         {
             File.WriteAllText(path.PathFile, textNote);

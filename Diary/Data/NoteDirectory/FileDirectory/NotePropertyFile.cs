@@ -1,5 +1,6 @@
 ﻿using Diary.Data.Entity;
 using Diary.Data.Interfaces;
+using Diary.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,10 +22,10 @@ namespace Diary.Data.NoteDirectory.Directory.Tools
             return condition.Find();
         }
 
-        public override void Create(Note note)
+        public override void Create(Note note, string path)
         {
-            File.WriteAllText(note.PathNote,note.Id.ToString() + " " + note.PathNote + " " 
-                + note.Date.Date.ToString() + " " + note.UserId.ToString());
+            File.WriteAllText(path, note.Id.ToString() + "*" + note.PathNote + "*" 
+                + note.Date.Date.ToString() + "*" + note.UserId.ToString());
         }
 
         public override List<Note> Select(ISelectNote condition)
