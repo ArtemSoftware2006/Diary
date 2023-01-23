@@ -2,17 +2,29 @@
 using Diary.Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Diary.Data.Directory
 {
-    internal class FindNoteAtPath 
+    public class SelectNoteAtPath : ISelectNote
     {
-        public Note Select(Note note)
+        public SelectNoteAtPath(Note note)
         {
-            throw new NotImplementedException();
+            ListNotes = new List<Note>();
+            CurrentNote = note;
+        }
+
+        public Note CurrentNote { get; set; }
+        public List<Note> ListNotes { get; set; }
+        public List<Note> Select()
+        {
+            CurrentNote.Text = File.ReadAllText(CurrentNote.PathNote.CurrentPath);
+            ListNotes.Add(CurrentNote);
+
+            return ListNotes;
         }
     }
 }

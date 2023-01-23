@@ -25,7 +25,7 @@ namespace Diary.Forms
         private FileNoteSaving file;
         private NotePath path;
         private FileFindNotesBetween betweenNote;
-        private FindNoteAtPath findNoteAtPath;
+        private SelectNoteAtPath findNoteAtPath;
         private List<Note> ListNotes;
         private Stack<Button> ListRecords_Note;
 
@@ -72,7 +72,7 @@ namespace Diary.Forms
                         betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
                              - counterNotesGroup - alsoShown - 1, Settings.Default.CounterNotes - alsoShown, new Note() { PathNote = path });
 
-                        findNoteAtPath = new FindNoteAtPath( new Note() { PathNote = path });
+                        findNoteAtPath = new SelectNoteAtPath( new Note() { PathNote = path });
 
                         if (file.Find(betweenNote));
                         {
