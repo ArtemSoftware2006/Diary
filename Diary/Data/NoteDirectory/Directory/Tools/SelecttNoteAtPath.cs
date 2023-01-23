@@ -21,7 +21,7 @@ namespace Diary.Data.Directory
         public List<Note> ListNotes { get; set; }
         public List<Note> Select()
         {
-            CurrentNote.Text = File.ReadAllText(CurrentNote.PathNote.CurrentPath);
+            CurrentNote.Text = File.ReadAllText(CurrentNote.PathNote.PathFile);
             ListNotes.Add(CurrentNote);
 
             return ListNotes;

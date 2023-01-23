@@ -16,18 +16,18 @@ namespace Diary.Data.Directory
     { 
         public override void CreateNote(Note note)
         {
-            File.WriteAllText(note.PathNote.CurrentPath, note.Date.ToString() + Environment.NewLine);
-            File.WriteAllText(note.PathNote.CurrentPath, note.Text);
+            File.WriteAllText(note.PathNote.PathFile, note.Date.ToString() + Environment.NewLine);
+            File.WriteAllText(note.PathNote.PathFile, note.Text);
         }
 
         public override void DeleteNote(Note note)
         {
-            File.Delete(note.PathNote.CurrentPath);
+            File.Delete(note.PathNote.PathFile);
         }
 
         public override void UpdateNote(Note note)
         {
-            File.WriteAllText(note.PathNote.CurrentPath, note.Date + Environment.NewLine + note.Text);
+            File.WriteAllText(note.PathNote.PathFile, note.Date + Environment.NewLine + note.Text);
         }
         public override bool Find(IFindNote condition)
         {

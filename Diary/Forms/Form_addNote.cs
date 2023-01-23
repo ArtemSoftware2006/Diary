@@ -39,9 +39,9 @@ namespace Diary.Forms
                 {
                     pathNotes.CreateDirectory();
 
-                    if (!Directory.Exists(pathNotes.CurrentDirectory))
+                    if (!Directory.Exists(pathNotes.PathDirectory))
                     {
-                        Directory.CreateDirectory(pathNotes.CurrentDirectory);
+                        Directory.CreateDirectory(pathNotes.PathDirectory);
                     }
 
                     pathNotes.CreateNewPath();
