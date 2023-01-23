@@ -99,15 +99,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Note\Directory\FileNoteSaving.cs" />
+    <Compile Include="Data\NoteDirectory\AbstractNoteProperty.cs" />
+    <Compile Include="Data\NoteDirectory\AbstractNoteText.cs" />
+    <Compile Include="Data\NoteDirectory\Directory\FileNoteSaving.cs" />
+    <Compile Include="Data\NoteDirectory\Directory\Tools\NotePropertyFile.cs" />
     <Compile Include="Data\User\Directory\FileUserSaving.cs" />
-    <Compile Include="Data\Note\Directory\FileFindNotesBetween.cs" />
-    <Compile Include="Data\Note\Directory\SelecttNoteAtPath.cs" />
+    <Compile Include="Data\NoteDirectory\Directory\Tools\FileFindNotesBetween.cs" />
+    <Compile Include="Data\NoteDirectory\Directory\Tools\SelecttNoteAtPath.cs" />
     <Compile Include="Data\Entity\Note.cs" />
     <Compile Include="Data\Date\IDateTime.cs" />
-    <Compile Include="Data\Note\NotesRepozitory.cs" />
-    <Compile Include="Data\Note\IFindNote.cs" />
-    <Compile Include="Data\Note\ISelectNote.cs" />
+    <Compile Include="Data\NoteDirectory\NotesRepozitory.cs" />
+    <Compile Include="Data\NoteDirectory\IFindNote.cs" />
+    <Compile Include="Data\NoteDirectory\ISelectNote.cs" />
     <Compile Include="Data\User\IUserRepozitory.cs" />
     <Compile Include="Data\Services\Path.cs" />
     <Compile Include="Forms\Form_showNotes.cs">
@@ -116,7 +119,7 @@
     <Compile Include="Forms\Form_showNotes.Designer.cs">
       <DependentUpon>Form_showNotes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Note\NotePath.cs" />
+    <Compile Include="Data\NoteDirectory\NotePath.cs" />
     <Compile Include="Forms\Form_entrance.cs">
       <SubType>Form</SubType>
     </Compile>
