@@ -2,6 +2,7 @@
 using Diary.Data.Entity;
 using Diary.Data.Interfaces;
 using Diary.Data.Notes;
+using Diary.Data.Services;
 using Diary.Properties;
 using System;
 using System.Collections.Generic;
@@ -15,18 +16,19 @@ using System.Windows.Forms;
 
 namespace Diary.Forms
 {
-    public partial class Form_ShowNotes : Form
+    public partial class Form_showNotes : Form
     {
-        private NotesRepozitory noteRep;
-        private FileNoteSaving file;
-        private List<Note> ListNotes;
-        private NotePath path;
-        private FileFindNotesBetween betweenNote;
-        private Stack<Button> ListRecords_Note;
         private int recordNote_Height;
         private int alsoShown;
         private const int counterNotesGroup = 5;
-        public Form_ShowNotes()
+        private NotesRepozitory noteRep;
+        private FileNoteSaving file;
+        private NotePath path;
+        private FileFindNotesBetween betweenNote;
+        private List<Note> ListNotes;
+        private Stack<Button> ListRecords_Note;
+
+        public Form_showNotes()
         {
             InitializeComponent();
         }
@@ -64,27 +66,28 @@ namespace Diary.Forms
 
                 alsoShown += counterNotesGroup;
 
-                for (int i = 1; i < alsoShown + 1; i++)
+                for (int i = alsoShown - counterNotesGroup + 1; i < alsoShown + 1; i++)
                 {
                     if (Settings.Default.CounterNotes - i > 0)
                     {
                         path.CreateDirectory();
                         path.CurrentPath = path.CurrentDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
 
-                        ListNotes.Add(noteRep.ReadNote(path));
-                        if (file.Find(betweenNote, ListNotes[i - 1]))
+                        if (file.Find(betweenNote, new Note() { PathNote = path }));
                         {
-                            ListRecords_Note.Push(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), ListNotes[i - 1].Text));
+                            ListNotes.Add(noteRep.ReadNote(path));
+                            ListRecords_Note.Push(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), ListNotes[i - 1].Text , i - 1));
                         }
                     }
                 }
                 AddNotesInGroupBox();
             }
         }
-        private Button CreateRecordNote(Point pt, string text)
+        private Button CreateRecordNote(Point pt, string text, int countBtn)
         {
             Button btn = new Button();
 
+            btn.Name = countBtn.ToString();
             btn.FlatAppearance.BorderSize = 3;
             btn.FlatAppearance.BorderColor = Color.Black;
             btn.Height = recordNote_Height;
@@ -97,9 +100,16 @@ namespace Diary.Forms
             btn.AutoSize = false;
             btn.Location = pt;
             btn.Text = text;
+            btn.Click += new EventHandler(this.BtnNote_click);
 
             return btn;
         }
+
+        private void BtnNote_click(object sender, EventArgs e)
+        {
+            textBox_noteText.Text = ListNotes[Convert.ToInt32((sender as Button).Name)].Text;
+        }
+
         private void AddNotesInGroupBox()
         {
             Stack<Button> tmp = ListRecords_Note;
@@ -113,5 +123,7 @@ namespace Diary.Forms
         {
             this.Close();
         }
+
+
     }
 }

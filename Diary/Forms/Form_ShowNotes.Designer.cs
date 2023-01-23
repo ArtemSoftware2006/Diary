@@ -1,6 +1,6 @@
 ﻿namespace Diary.Forms
 {
-    partial class Form_ShowNotes
+    partial class Form_showNotes
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,7 @@
             this.button_onMain = new System.Windows.Forms.Button();
             this.button_delete = new System.Windows.Forms.Button();
             this.button_redact = new System.Windows.Forms.Button();
+            this.textBox_noteText = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -107,6 +108,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBox_noteText, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 26);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -165,7 +167,17 @@
             this.button_redact.Text = "Редактировать";
             this.button_redact.UseVisualStyleBackColor = true;
             // 
-            // Form_ShowNotes
+            // textBox_noteText
+            // 
+            this.textBox_noteText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_noteText.Location = new System.Drawing.Point(4, 4);
+            this.textBox_noteText.Multiline = true;
+            this.textBox_noteText.Name = "textBox_noteText";
+            this.textBox_noteText.ReadOnly = true;
+            this.textBox_noteText.Size = new System.Drawing.Size(550, 553);
+            this.textBox_noteText.TabIndex = 1;
+            // 
+            // Form_showNotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -174,7 +186,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Form_ShowNotes";
+            this.Name = "Form_showNotes";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "Ваши записи";
             this.Load += new System.EventHandler(this.Form_ShowNotes_Load);
@@ -185,6 +197,7 @@
             this.groupBox_recordNote.ResumeLayout(false);
             this.groupBox_showNote.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -201,5 +214,6 @@
         private System.Windows.Forms.Button button_onMain;
         private System.Windows.Forms.Button button_delete;
         private System.Windows.Forms.Button button_redact;
+        private System.Windows.Forms.TextBox textBox_noteText;
     }
 }

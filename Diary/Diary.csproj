@@ -112,11 +112,11 @@
     <Compile Include="Data\Interfaces\IUserRepozitory.cs" />
     <Compile Include="Data\Interfaces\IUserSpecification.cs" />
     <Compile Include="Data\Services\Path.cs" />
-    <Compile Include="Forms\Form_ShowNotes.cs">
+    <Compile Include="Forms\Form_showNotes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form_ShowNotes.Designer.cs">
-      <DependentUpon>Form_ShowNotes.cs</DependentUpon>
+    <Compile Include="Forms\Form_showNotes.Designer.cs">
+      <DependentUpon>Form_showNotes.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Directory\NotePath.cs" />
     <Compile Include="Forms\Form_entrance.cs">
@@ -167,8 +167,8 @@
     <EmbeddedResource Include="Forms\Form_registr.resx">
       <DependentUpon>Form_registr.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form_ShowNotes.resx">
-      <DependentUpon>Form_ShowNotes.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_showNotes.resx">
+      <DependentUpon>Form_showNotes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

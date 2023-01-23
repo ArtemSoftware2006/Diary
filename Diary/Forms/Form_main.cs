@@ -57,7 +57,7 @@ namespace Diary
 
         private void button_showAllNotes_Click(object sender, EventArgs e)
         {
-            Form_ShowNotes fm = new Form_ShowNotes();
+            Form_showNotes fm = new Form_showNotes();
             fm.ShowDialog();
         }
     }
