@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Diary.Data.Services
 {
-    abstract public class Path
+    abstract public class MyPath
     {
         public string PathDirectory { get; protected set; }
         public string PathFile { get; set; }

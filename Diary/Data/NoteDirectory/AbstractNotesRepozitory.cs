@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Diary.Data.Interfaces
 {
-    public abstract class NotesRepozitory
+    public abstract class AbstractNotesRepozitory
     {
         protected IFindNote findNote;
         protected ISelectNote selectNote;

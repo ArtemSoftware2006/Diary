@@ -1,12 +1,28 @@
-﻿using System;
+﻿using Diary.Data.Services;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Diary.Data.NoteDirectory.Directory
 {
-    internal class NoteTextFile
+    public class NoteTextFile : AbstractNoteText
     {
+        public override void Create(MyPath path,string textNote)
+        {
+            File.WriteAllText(path.PathFile, textNote);
+        }
+
+        public override void Delete(MyPath pathNote)
+        {
+            File.Delete(pathNote.PathFile);
+        }
+
+        public override void Update(MyPath path,string textNote)
+        {
+            File.WriteAllText(path.PathFile, textNote);
+        }
     }
 }
