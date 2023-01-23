@@ -99,18 +99,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Directory\FileNoteSaving.cs" />
-    <Compile Include="Data\Directory\FileUserSaving.cs" />
-    <Compile Include="Data\Directory\FileFindNotesBetween.cs" />
-    <Compile Include="Data\Directory\FindNoteAtPath.cs" />
+    <Compile Include="Data\Note\Directory\FileNoteSaving.cs" />
+    <Compile Include="Data\Note\Directory\FileUserSaving.cs" />
+    <Compile Include="Data\Note\Directory\FileFindNotesBetween.cs" />
+    <Compile Include="Data\Note\FindNoteAtPath.cs" />
     <Compile Include="Data\Entity\Note.cs" />
-    <Compile Include="Data\Interfaces\IDateTime.cs" />
-    <Compile Include="Data\Interfaces\INoteSpecification.cs" />
-    <Compile Include="Data\Services\NotesRepozitory.cs" />
-    <Compile Include="Data\Interfaces\IFindNote.cs" />
-    <Compile Include="Data\Interfaces\ISelectNote.cs" />
-    <Compile Include="Data\Interfaces\IUserRepozitory.cs" />
-    <Compile Include="Data\Interfaces\IUserSpecification.cs" />
+    <Compile Include="Data\Date\IDateTime.cs" />
+    <Compile Include="Data\Note\NotesRepozitory.cs" />
+    <Compile Include="Data\Note\IFindNote.cs" />
+    <Compile Include="Data\Note\ISelectNote.cs" />
+    <Compile Include="Data\User\IUserRepozitory.cs" />
     <Compile Include="Data\Services\Path.cs" />
     <Compile Include="Forms\Form_showNotes.cs">
       <SubType>Form</SubType>
@@ -118,7 +116,7 @@
     <Compile Include="Forms\Form_showNotes.Designer.cs">
       <DependentUpon>Form_showNotes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Directory\NotePath.cs" />
+    <Compile Include="Data\Note\NotePath.cs" />
     <Compile Include="Forms\Form_entrance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,7 +132,7 @@
     <Compile Include="Data\Entity\Person.cs" />
     <Compile Include="Data\SQL\AddNote.cs" />
     <Compile Include="Data\SQL\AddUser.cs" />
-    <Compile Include="Data\Services\MySqlDateTime.cs" />
+    <Compile Include="Data\Date\MySqlDateTime.cs" />
     <Compile Include="Data\SQL\SelectPerson.cs" />
     <Compile Include="Data\SQL\SqlCmd.cs" />
     <Compile Include="Data\SQL\DBConnector.cs" />

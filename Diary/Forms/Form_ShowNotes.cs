@@ -31,19 +31,17 @@ namespace Diary.Forms
         public Form_showNotes()
         {
             InitializeComponent();
-        }
-
-        private void Form_ShowNotes_Load(object sender, EventArgs e)
-        {
-            recordNote_Height = (panel_recordNotes.Height * (100 / counterNotesGroup))/100 + 10;
 
             file = new FileNoteSaving();
             ListRecords_Note = new Stack<Button>();
             ListNotes = new List<Note>();
             path = new NotePath();
             alsoShown = 0;
+        }
 
-            noteRep = file;
+        private void Form_ShowNotes_Load(object sender, EventArgs e)
+        {
+            recordNote_Height = (panel_recordNotes.Height * (100 / counterNotesGroup))/100 + 10;
 
             ShowNotes();
 
