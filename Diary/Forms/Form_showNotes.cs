@@ -21,7 +21,7 @@ namespace Diary.Forms
         private int recordNote_Height;
         private int alsoShown;
         private const int counterNotesGroup = 5;
-        private NotesRepozitory noteRep;
+        private AbstractNotesRepozitory noteRep;
         private FileNoteSaving file;
         private NotePath path;
         private FileFindNotesBetween betweenNote;

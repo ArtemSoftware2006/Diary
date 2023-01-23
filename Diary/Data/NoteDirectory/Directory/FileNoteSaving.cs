@@ -12,7 +12,7 @@ using Diary.SQL;
 
 namespace Diary.Data.Directory
 {
-    public class FileNoteSaving : NotesRepozitory
+    public class FileNoteSaving : AbstractNotesRepozitory
     { 
         public override void CreateNote(Note note)
         {
