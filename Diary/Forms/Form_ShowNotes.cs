@@ -1,6 +1,8 @@
 ﻿using Diary.Data.Directory;
 using Diary.Data.Entity;
 using Diary.Data.Interfaces;
+using Diary.Data.NoteDirectory.Directory;
+using Diary.Data.NoteDirectory.Directory.Tools;
 using Diary.Data.Notes;
 using Diary.Data.Services;
 using Diary.Properties;
@@ -21,11 +23,12 @@ namespace Diary.Forms
         private int recordNote_Height;
         private int alsoShown;
         private const int counterNotesGroup = 5;
-        private AbstractNotesRepozitory noteRep;
-        private FileNoteSaving file;
-        private NotePath path;
+        private NoteTextFile noteTextFile;
+        private NotePropertyFile notePropertyFile;
+        private NotePath pathProperty;
+        private NotePath pathText;
         private FileFindNotesBetween betweenNote;
-        private SelectNoteAtPath findNoteAtPath;
+        private SelectNoteByID findNoteByID;
         private List<Note> ListNotes;
         private Stack<Button> ListRecords_Note;
 
@@ -33,10 +36,12 @@ namespace Diary.Forms
         {
             InitializeComponent();
 
-            file = new FileNoteSaving();
+            noteTextFile = new NoteTextFile();
+            notePropertyFile = new NotePropertyFile();
             ListRecords_Note = new Stack<Button>();
             ListNotes = new List<Note>();
-            path = new NotePath();
+            pathProperty = new NotePath();
+            pathText = new NotePath();
             alsoShown = 0;
         }
 
@@ -62,22 +67,25 @@ namespace Diary.Forms
             {
                 alsoShown += counterNotesGroup;
 
-                for (int i = alsoShown - counterNotesGroup + 1; i < alsoShown + 1; i++)
+                for (int i = alsoShown - counterNotesGroup; i < alsoShown + 1; i++)
                 {
                     if (Settings.Default.CounterNotes - i > 0)
                     {
-                        path.CreateNewDirectory();
-                        path.PathFile = path.PathDirectory + $"/Note{Settings.Default.CounterNotes - i}.txt";
+                        pathText.CreateNewDirectory(FileNames.DirectoryName + i.ToString());
+                        pathText.CreateNewPath(FileNames.FileTextName + i.ToString() + ".txt");
+                        pathProperty.CreateNewDirectory(FileNames.DirectoryName + i.ToString());
+                        pathProperty.CreateNewPath(FileNames.FilePropertyName + i.ToString() + ".txt");
+
+                        findNoteByID = new SelectNoteByID(pathProperty.PathFile, i);
+                        //notePropertyFile.Select(findNoteByID).ForEach(x => ListNotes.Add(x));
 
                         betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
-                             - counterNotesGroup - alsoShown - 1, Settings.Default.CounterNotes - alsoShown, new Note() { PathNote = path });
+                             - counterNotesGroup - alsoShown - 1, Settings.Default.CounterNotes - alsoShown, pathProperty.PathFile);
 
-                        findNoteAtPath = new SelectNoteAtPath( new Note() { PathNote = path });
-
-                        if (file.Find(betweenNote));
+                        if (notePropertyFile.Find(betweenNote)) ;
                         {
-                            findNoteAtPath.Select().ForEach(x => ListNotes.Add(x));
-                            ListRecords_Note.Push(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), ListNotes[i - 1].Text , i - 1));
+                            findNoteByID.Select().ForEach(x => ListNotes.Add(x));
+                            ListRecords_Note.Push(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), noteTextFile.Read(pathText.PathFile), i));
                         }
                     }
                 }
@@ -108,7 +116,7 @@ namespace Diary.Forms
 
         private void BtnNote_click(object sender, EventArgs e)
         {
-            textBox_noteText.Text = ListNotes[Convert.ToInt32((sender as Button).Name)].Text;
+            textBox_noteText.Text = noteTextFile.Read( ListNotes[Convert.ToInt32((sender as Button).Name)].PathNote ) ;
         }
 
         private void AddNotesInGroupBox()

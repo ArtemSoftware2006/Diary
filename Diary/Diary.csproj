@@ -110,6 +110,7 @@
     <Compile Include="Data\Date\IDateTime.cs" />
     <Compile Include="Data\NoteDirectory\IFindNote.cs" />
     <Compile Include="Data\NoteDirectory\ISelectNote.cs" />
+    <Compile Include="Data\User\ISelectUser.cs" />
     <Compile Include="Data\User\IUserRepozitory.cs" />
     <Compile Include="Data\Services\MyPath.cs" />
     <Compile Include="FileNames.cs" />
