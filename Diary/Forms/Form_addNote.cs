@@ -46,10 +46,10 @@ namespace Diary.Forms
                         Directory.CreateDirectory(Application.StartupPath + "\\Notes");
                     }
 
-                    pathProperty.CreateNewDirectory(FileNames.CreatePathDirectoryName(Settings.Default.CounterNotes.ToString()));
-                    pathProperty.CreateNewPath(FileNames.CreatePathFileProperty(Settings.Default.CounterNotes.ToString() + ".txt"));
-                    pathText.CreateNewDirectory(FileNames.CreatePathDirectoryName(Settings.Default.CounterNotes.ToString()));
-                    pathText.CreateNewPath(FileNames.CreatePathFileText(Settings.Default.CounterNotes.ToString() + ".txt"));
+                    pathProperty.CreateNewDirectory(FileNoteNames.CreatePathDirectoryName(Settings.Default.CounterNotes.ToString()));
+                    pathProperty.CreateNewPath(FileNoteNames.CreatePathFileProperty(Settings.Default.CounterNotes.ToString() + ".txt"));
+                    pathText.CreateNewDirectory(FileNoteNames.CreatePathDirectoryName(Settings.Default.CounterNotes.ToString()));
+                    pathText.CreateNewPath(FileNoteNames.CreatePathFileText(Settings.Default.CounterNotes.ToString() + ".txt"));
 
 
                     dt.ConvertDate(DateTime.Now);

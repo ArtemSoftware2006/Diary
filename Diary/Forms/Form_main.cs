@@ -39,9 +39,12 @@ namespace Diary
 
         private void Form_main_Load(object sender, EventArgs e)
         {
-            FileNames.FilePropertyName = $"noteProperty";
-            FileNames.FileTextName = $"noteText";
-            FileNames.DirectoryName = $"Note";
+            FileNoteNames.FilePropertyName = $"noteProperty";
+            FileNoteNames.FileTextName = $"noteText";
+            FileNoteNames.DirectoryName = $"Note";
+
+            FileUsersNames.DirectoryName = "User";
+            FileUsersNames.FileName = "user";
 
             Form_entrance fm = new Form_entrance();
             fm.TopMost = true;

@@ -116,8 +116,10 @@
     <Compile Include="Data\User\IFindUser.cs" />
     <Compile Include="Data\User\ISelectUser.cs" />
     <Compile Include="Data\Services\MyPath.cs" />
+    <Compile Include="Data\User\Tools\FindUserByEmail.cs" />
     <Compile Include="Data\User\Tools\FindUserByLogin.cs" />
-    <Compile Include="FileNames.cs" />
+    <Compile Include="FileNoteNames.cs" />
+    <Compile Include="FileUsersNames.cs" />
     <Compile Include="Forms\Form_showNotes.cs">
       <SubType>Form</SubType>
     </Compile>

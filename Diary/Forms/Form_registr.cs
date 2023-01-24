@@ -1,4 +1,9 @@
-﻿using Diary.SQL;
+﻿using Diary.Data.Directory;
+using Diary.Data.Entity;
+using Diary.Data.User.FileUserDirectory;
+using Diary.Data.User.Tools;
+using Diary.Properties;
+using Diary.SQL;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Relational;
 using System;
@@ -16,15 +21,20 @@ namespace Diary.Forms
     public partial class Form_registr : Form
     {
         private bool IsMainClose = true;
-        private MySqlCommand cmd;
-        private SelectPerson selectUser;
-        private DataTable table;
-        private MySqlDataAdapter adapter;
-        private MySqlDataReader reader;
-        private SelectUser selUser;
-        private SelectEmail selEmail;
-        private AddUser add;
+        //private MySqlCommand cmd;
+        //private SelectPerson selectUser;
+        //private DataTable table;
+        //private MySqlDataAdapter adapter;
+        //private MySqlDataReader reader;
+        //private SelectUser selUser;
+        //private SelectEmail selEmail;
+        //private AddUser add;
 
+        private Users user;
+        private FindUserByLogin findUserByLogin;
+        private FindUserByEmail findUserByEmail;
+        private FileUserSaving fileUserSaving;
+        private PathUser pathUser;
 
         public Form_registr()
         {
@@ -36,13 +46,30 @@ namespace Diary.Forms
         {
             if (textBox_emailInput.Text != "" & textBox_loginInput.Text != "" & textBox_pswInput.Text != "")
             {
-                DBConnector.Open();
+                //DBConnector.Open();
+                user = new Users();
 
-                if (IsLoginInDB(textBox_loginInput.Text))
+                user.IdUser = Settings.Default.CounterUser;
+                user.Login = textBox_loginInput.Text;
+                user.Password = textBox_pswInput.Text;
+                user.Email = textBox_emailInput.Text;
+
+                pathUser = new PathUser();
+
+                pathUser.CreateNewDirectory(FileUsersNames.DirectoryName + Settings.Default.CounterUser.ToString());
+                pathUser.CreateNewPath(FileUsersNames.FileName + Settings.Default.CounterUser.ToString());
+
+                fileUserSaving = new FileUserSaving(pathUser.PathFile);
+
+                findUserByLogin = new FindUserByLogin(user.Login, pathUser.PathFile);
+                findUserByEmail = new FindUserByEmail(user.Email, pathUser.PathFile);
+
+
+                if (fileUserSaving.Find(findUserByLogin))
                 {
                     MessageBox.Show("Такой пользователь уже зарегистрирован! Смените ваш логин!","Ошибка");
                 }
-                else if(IsEmailInDB(textBox_emailInput.Text))
+                else if(fileUserSaving.Find(findUserByEmail))
                 {
                     MessageBox.Show("Пользователь с такой почтой уже создан! Нельзя иметь два учётные записи с одной почтой!", "Ошибка");
                 }
@@ -50,30 +77,43 @@ namespace Diary.Forms
                 {
                     try
                     {
-                        reader.Close();
+                        //reader.Close();
+                        //add = new AddUser(textBox_loginInput.Text, textBox_pswInput.Text, textBox_emailInput.Text);
+                        //cmd = new MySqlCommand(add.SqlString, DBConnector.connect);
 
-                        add = new AddUser(textBox_loginInput.Text, textBox_pswInput.Text, textBox_emailInput.Text);
+                        fileUserSaving.Create(user);
 
-                        cmd = new MySqlCommand(add.SqlString, DBConnector.connect);
-
-                        if (cmd.ExecuteNonQuery() == 1)
+                        if (fileUserSaving.Find(findUserByLogin))
                         {
-                            reader.Close();
-
-                            selectUser = new SelectPerson(textBox_loginInput.Text);
-                            table = new DataTable("Person");
-
-                            adapter = new MySqlDataAdapter(selectUser.SqlString, DBConnector.connect);
-                            adapter.Fill(table);
-
-                            Person.IdUser = Convert.ToInt32(table.Rows[0].ItemArray[0]);
-                            Person.Login = table.Rows[0].ItemArray[1].ToString();
-                            Person.Password = table.Rows[0].ItemArray[2].ToString();
-                            Person.Email = table.Rows[0].ItemArray[3].ToString();
+                            Settings.Default.CounterUser++;
+                            Settings.Default.Save();
+                            Person.IdUser = user.IdUser;
+                            Person.Email = user.Email;
+                            Person.Login = user.Login;
+                            Person.Password = user.Password;
 
                             Form_main.EnableMain();
                             this.Dispose();
                         }
+
+                        //if (cmd.ExecuteNonQuery() == 1)
+                        //{
+                        //    //reader.Close();
+                        //
+                        //    //selectUser = new SelectPerson(textBox_loginInput.Text);
+                        //    //table = new DataTable("Person");
+                        //
+                        //    //adapter = new MySqlDataAdapter(selectUser.SqlString, DBConnector.connect);
+                        //    //adapter.Fill(table);
+                        //
+                        //    //Person.IdUser = Convert.ToInt32(table.Rows[0].ItemArray[0]);
+                        //    //Person.Login = table.Rows[0].ItemArray[1].ToString();
+                        //    //Person.Password = table.Rows[0].ItemArray[2].ToString();
+                        //    //Person.Email = table.Rows[0].ItemArray[3].ToString();
+                        //
+                        //    Form_main.EnableMain();
+                        //    this.Dispose();
+                        //}
                     }
                     catch (Exception)
                     {
@@ -81,7 +121,7 @@ namespace Diary.Forms
                     }
                 }
 
-                DBConnector.Close();
+                //DBConnector.Close();
             }
             else
             {
@@ -89,38 +129,38 @@ namespace Diary.Forms
             }
         }
 
-        private bool IsEmailInDB(string email)
-        {
-            if (!(reader == null))
-            {
-                reader.Close();
-            }
+        //private bool IsEmailInDB(string email)
+        //{
+        //    if (!(reader == null))
+        //    {
+        //        reader.Close();
+        //    }
 
-            DBConnector.Open();
+        //    DBConnector.Open();
 
-            selEmail = new SelectEmail(email);
-            cmd = new MySqlCommand(selEmail.SqlString, DBConnector.connect);
+        //    selEmail = new SelectEmail(email);
+        //    cmd = new MySqlCommand(selEmail.SqlString, DBConnector.connect);
 
-            reader = cmd.ExecuteReader();
+        //    reader = cmd.ExecuteReader();
 
-            return reader.Read();
-        }
-        private bool IsLoginInDB(string login)
-        {
-            if (!(reader == null))
-            {
-                reader.Close();
-            }
+        //    return reader.Read();
+        //}
+        //private bool IsLoginInDB(string login)
+        //{
+        //    if (!(reader == null))
+        //    {
+        //        reader.Close();
+        //    }
 
-            DBConnector.Open();
+        //    DBConnector.Open();
 
-            selUser = new SelectUser(login);
-            cmd = new MySqlCommand(selUser.SqlString, DBConnector.connect);
+        //    selUser = new SelectUser(login);
+        //    cmd = new MySqlCommand(selUser.SqlString, DBConnector.connect);
 
-            reader = cmd.ExecuteReader();
+        //    reader = cmd.ExecuteReader();
 
-            return reader.Read();
-        }
+        //    return reader.Read();
+        //}
         private void Form_registr_MouseLeave(object sender, EventArgs e)
         {
             this.label_registr.ForeColor = Color.Red;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Diary
 {
-    static public class FileNames
+    static public class FileNoteNames
     {
         static public string DirectoryName { get;  set; }
         static public string FileTextName { get;  set; }

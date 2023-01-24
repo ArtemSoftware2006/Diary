@@ -1,5 +1,4 @@
-﻿using Diary.Data.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,20 +7,21 @@ using System.Threading.Tasks;
 
 namespace Diary.Data.User.Tools
 {
-    public class FindUserByLogin : IFindUser
+    public class FindUserByEmail : IFindUser
     {
         public string FilePath { get; set; }
-        public string Login { get; set; }
-        public FindUserByLogin(string login, string path) 
+        public string Email { get; set; }
+        public FindUserByEmail(string email, string path)
         {
-            Login = login;
+            Email = email;
             FilePath = path;
         }
         public bool Find()
         {
             try
             {
-                return Login == File.ReadAllText(FilePath).Split(new char[] { '*' })[1];
+                return Email == File.ReadAllText(FilePath).Split(new char[] { '*' })[3];
+
             }
             catch (Exception)
             {

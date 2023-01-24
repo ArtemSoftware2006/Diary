@@ -46,5 +46,17 @@ namespace Diary.Properties {
                 this["CounterNotes"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CounterUser {
+            get {
+                return ((int)(this["CounterUser"]));
+            }
+            set {
+                this["CounterUser"] = value;
+            }
+        }
     }
 }

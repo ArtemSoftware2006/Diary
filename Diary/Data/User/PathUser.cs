@@ -17,7 +17,7 @@ namespace Diary.Data.User.FileUserDirectory
         }
         public override void CreateNewDirectory(string name)
         {
-            PathDirectory = Application.StartupPath + "\\Users" + name;
+            PathDirectory = Application.StartupPath + "\\Users\\" + name ;
             if (!System.IO.Directory.Exists(PathDirectory))
             {
                 System.IO.Directory.CreateDirectory(PathDirectory);
