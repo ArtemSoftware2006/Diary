@@ -102,18 +102,21 @@
     <Compile Include="Data\Entity\Users.cs" />
     <Compile Include="Data\NoteDirectory\AbstractNoteProperty.cs" />
     <Compile Include="Data\NoteDirectory\AbstractNoteText.cs" />
-    <Compile Include="Data\NoteDirectory\FileDirectory\NotePropertyFile.cs" />
-    <Compile Include="Data\NoteDirectory\FileDirectory\NoteTextFile.cs" />
-    <Compile Include="Data\User\Directory\FileUserSaving.cs" />
-    <Compile Include="Data\NoteDirectory\FileDirectory\Tools\FileFindNotesBetween.cs" />
-    <Compile Include="Data\NoteDirectory\FileDirectory\Tools\SelecttNoteByID.cs" />
+    <Compile Include="Data\NoteDirectory\FileNoteDirectory\NotePropertyFile.cs" />
+    <Compile Include="Data\NoteDirectory\FileNoteDirectory\NoteTextFile.cs" />
+    <Compile Include="Data\User\AbstractUser.cs" />
+    <Compile Include="Data\User\FileUserDirectory\FileUserSaving.cs" />
+    <Compile Include="Data\NoteDirectory\FileNoteDirectory\Tools\FileFindNotesBetween.cs" />
+    <Compile Include="Data\NoteDirectory\FileNoteDirectory\Tools\SelecttNoteByID.cs" />
     <Compile Include="Data\Entity\Note.cs" />
     <Compile Include="Data\Date\IDateTime.cs" />
     <Compile Include="Data\NoteDirectory\IFindNote.cs" />
     <Compile Include="Data\NoteDirectory\ISelectNote.cs" />
+    <Compile Include="Data\User\PathUser.cs" />
     <Compile Include="Data\User\IFindUser.cs" />
     <Compile Include="Data\User\ISelectUser.cs" />
     <Compile Include="Data\Services\MyPath.cs" />
+    <Compile Include="Data\User\Tools\FindUserByLogin.cs" />
     <Compile Include="FileNames.cs" />
     <Compile Include="Forms\Form_showNotes.cs">
       <SubType>Form</SubType>
@@ -134,7 +137,7 @@
     <Compile Include="Forms\Form_registr.Designer.cs">
       <DependentUpon>Form_registr.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Entity\Person.cs" />
+    <Compile Include="Data\Services\Person.cs" />
     <Compile Include="Data\SQL\AddNote.cs" />
     <Compile Include="Data\SQL\AddUser.cs" />
     <Compile Include="Data\Date\MySqlDateTime.cs" />
