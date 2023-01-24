@@ -99,6 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Entity\Users.cs" />
     <Compile Include="Data\NoteDirectory\AbstractNoteProperty.cs" />
     <Compile Include="Data\NoteDirectory\AbstractNoteText.cs" />
     <Compile Include="Data\NoteDirectory\FileDirectory\NotePropertyFile.cs" />
@@ -110,8 +111,8 @@
     <Compile Include="Data\Date\IDateTime.cs" />
     <Compile Include="Data\NoteDirectory\IFindNote.cs" />
     <Compile Include="Data\NoteDirectory\ISelectNote.cs" />
+    <Compile Include="Data\User\IFindUser.cs" />
     <Compile Include="Data\User\ISelectUser.cs" />
-    <Compile Include="Data\User\IUserRepozitory.cs" />
     <Compile Include="Data\Services\MyPath.cs" />
     <Compile Include="FileNames.cs" />
     <Compile Include="Forms\Form_showNotes.cs">
