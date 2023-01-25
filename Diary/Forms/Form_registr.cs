@@ -21,15 +21,6 @@ namespace Diary.Forms
     public partial class Form_registr : Form
     {
         private bool IsMainClose = true;
-        //private MySqlCommand cmd;
-        //private SelectPerson selectUser;
-        //private DataTable table;
-        //private MySqlDataAdapter adapter;
-        //private MySqlDataReader reader;
-        //private SelectUser selUser;
-        //private SelectEmail selEmail;
-        //private AddUser add;
-
         private Users user;
         private FindUserByLogin findUserByLogin;
         private FindUserByEmail findUserByEmail;
@@ -46,7 +37,6 @@ namespace Diary.Forms
         {
             if (textBox_emailInput.Text != "" & textBox_loginInput.Text != "" & textBox_pswInput.Text != "")
             {
-                //DBConnector.Open();
                 user = new Users();
 
                 user.IdUser = Settings.Default.CounterUser;
@@ -77,10 +67,6 @@ namespace Diary.Forms
                 {
                     try
                     {
-                        //reader.Close();
-                        //add = new AddUser(textBox_loginInput.Text, textBox_pswInput.Text, textBox_emailInput.Text);
-                        //cmd = new MySqlCommand(add.SqlString, DBConnector.connect);
-
                         fileUserSaving.Create(user);
 
                         if (fileUserSaving.Find(findUserByLogin))
@@ -96,25 +82,6 @@ namespace Diary.Forms
                             Form_main.EnableMain();
                             this.Dispose();
                         }
-
-                        //if (cmd.ExecuteNonQuery() == 1)
-                        //{
-                        //    //reader.Close();
-                        //
-                        //    //selectUser = new SelectPerson(textBox_loginInput.Text);
-                        //    //table = new DataTable("Person");
-                        //
-                        //    //adapter = new MySqlDataAdapter(selectUser.SqlString, DBConnector.connect);
-                        //    //adapter.Fill(table);
-                        //
-                        //    //Person.IdUser = Convert.ToInt32(table.Rows[0].ItemArray[0]);
-                        //    //Person.Login = table.Rows[0].ItemArray[1].ToString();
-                        //    //Person.Password = table.Rows[0].ItemArray[2].ToString();
-                        //    //Person.Email = table.Rows[0].ItemArray[3].ToString();
-                        //
-                        //    Form_main.EnableMain();
-                        //    this.Dispose();
-                        //}
                     }
                     catch (Exception)
                     {
@@ -129,39 +96,6 @@ namespace Diary.Forms
                 MessageBox.Show("Не все поля заполнены!", "Ошибка");
             }
         }
-
-        //private bool IsEmailInDB(string email)
-        //{
-        //    if (!(reader == null))
-        //    {
-        //        reader.Close();
-        //    }
-
-        //    DBConnector.Open();
-
-        //    selEmail = new SelectEmail(email);
-        //    cmd = new MySqlCommand(selEmail.SqlString, DBConnector.connect);
-
-        //    reader = cmd.ExecuteReader();
-
-        //    return reader.Read();
-        //}
-        //private bool IsLoginInDB(string login)
-        //{
-        //    if (!(reader == null))
-        //    {
-        //        reader.Close();
-        //    }
-
-        //    DBConnector.Open();
-
-        //    selUser = new SelectUser(login);
-        //    cmd = new MySqlCommand(selUser.SqlString, DBConnector.connect);
-
-        //    reader = cmd.ExecuteReader();
-
-        //    return reader.Read();
-        //}
         private void Form_registr_MouseLeave(object sender, EventArgs e)
         {
             this.label_registr.ForeColor = Color.Red;

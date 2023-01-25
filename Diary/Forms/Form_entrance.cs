@@ -40,16 +40,10 @@ namespace Diary.Forms
 
         private void button_entrance_Click(object sender, EventArgs e)
         {
-            //DBConnector.Open();
-
             if (textBox_loginInput.Text != "" && textBox_pswInput.Text != "")
             {
-                // DBConnector.Open();
 
-                //selectloginAndPsd = new SelectLoginAndPsw(textBox_loginInput.Text, textBox_pswInput.Text);
-                //cmd = new MySqlCommand(selectloginAndPsd.SqlString, DBConnector.connect);
-
-                //reader = cmd.ExecuteReader();
+                listUsers = new List<Users>();
                 pathUser = new PathUser();
 
                 for (int i = 0; i < Settings.Default.CounterUser; i++)
@@ -64,26 +58,12 @@ namespace Diary.Forms
 
                     if (fileUserSaving.Find(findUserEntrance))
                     {
-                        listUsers = new List<Users>();
                         listUsers = fileUserSaving.Select(selectUserByPath);
                     }
                 }
 
                 if (listUsers.Count > 0)
                 {
-                    //reader.Close();
-
-                    //selectUser = new SelectPerson(textBox_loginInput.Text);
-                    //table = new DataTable("Person");
-
-                    //adapter = new MySqlDataAdapter(selectUser.SqlString, DBConnector.connect);
-                    //adapter.Fill(table);
-                   
-                    //Person.IdUser = Convert.ToInt32(table.Rows[0].ItemArray[0]);
-                    //Person.Login = table.Rows[0].ItemArray[1].ToString();
-                    //Person.Password = table.Rows[0].ItemArray[2].ToString();
-                    //Person.Email = table.Rows[0].ItemArray[3].ToString();
-
                     Person.IdUser = listUsers[0].IdUser;
                     Person.Login = listUsers[0].Login;
                     Person.Password = listUsers[0].Password;
@@ -94,7 +74,7 @@ namespace Diary.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Мы не нашли такого пользователя!", "Ошибка!");
+                    MessageBox.Show("Ошибка в логине или пароле!", "Ошибка!");
                 }
 
                 DBConnector.Close();
