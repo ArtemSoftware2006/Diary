@@ -64,6 +64,7 @@ namespace Diary.Forms
 
                     Settings.Default.CounterNotes++;
                     Settings.Default.Save();
+                    textBox_note.Text = String.Empty;
 
                     MessageBox.Show("Запись сохранена!","Успешно");
 

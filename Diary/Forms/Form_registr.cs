@@ -87,6 +87,7 @@ namespace Diary.Forms
                         {
                             Settings.Default.CounterUser++;
                             Settings.Default.Save();
+
                             Person.IdUser = user.IdUser;
                             Person.Email = user.Email;
                             Person.Login = user.Login;

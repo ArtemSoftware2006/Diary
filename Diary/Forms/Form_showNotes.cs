@@ -1,19 +1,12 @@
 ﻿using Diary.Data.Directory;
 using Diary.Data.Entity;
-using Diary.Data.Interfaces;
 using Diary.Data.NoteDirectory.Directory;
 using Diary.Data.NoteDirectory.Directory.Tools;
 using Diary.Data.Notes;
-using Diary.Data.Services;
 using Diary.Properties;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Diary.Forms
@@ -30,7 +23,8 @@ namespace Diary.Forms
         private FileFindNotesBetween betweenNote;
         private SelectNoteByID findNoteByID;
         private List<Note> ListNotes;
-        private Stack<Button> ListRecords_Note;
+        private List<Button> ListRecords_Note;
+
 
         public Form_showNotes()
         {
@@ -38,16 +32,16 @@ namespace Diary.Forms
 
             noteTextFile = new NoteTextFile();
             notePropertyFile = new NotePropertyFile();
-            ListRecords_Note = new Stack<Button>();
-            ListNotes = new List<Note>();
             pathProperty = new NotePath();
+            ListNotes = new List<Note>();
+            ListRecords_Note = new List<Button>();
             pathText = new NotePath();
             alsoShown = 0;
         }
 
         private void Form_ShowNotes_Load(object sender, EventArgs e)
         {
-            recordNote_Height = (panel_recordNotes.Height * (100 / counterNotesGroup))/100 + 10;
+            recordNote_Height = (panel_recordNotes.Height * (100 / counterNotesGroup)) / 100 + 10;
 
             ShowNotes();
 
@@ -65,34 +59,30 @@ namespace Diary.Forms
         {
             if (Settings.Default.CounterNotes - alsoShown >= 0)
             {
-                alsoShown += counterNotesGroup;
-
-                for (int i = alsoShown - counterNotesGroup; i < alsoShown + 1; i++)
+                for (int i = Settings.Default.CounterNotes - alsoShown - 1, countNote = alsoShown; (i >= Settings.Default.CounterNotes - alsoShown - counterNotesGroup) && (i >= 0); i--, countNote++)
                 {
-                    if (Settings.Default.CounterNotes - i > 0)
+                    pathText.CreateNewDirectory(FileNoteNames.DirectoryName + i.ToString());
+                    pathText.CreateNewPath(FileNoteNames.FileTextName + i.ToString() + ".txt");
+                    pathProperty.CreateNewDirectory(FileNoteNames.DirectoryName + i.ToString());
+                    pathProperty.CreateNewPath(FileNoteNames.FilePropertyName + i.ToString() + ".txt");
+
+
+                    findNoteByID = new SelectNoteByID(pathProperty.PathFile, i);
+
+                    betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
+                         - counterNotesGroup - alsoShown, Settings.Default.CounterNotes - alsoShown - 1, pathProperty.PathFile);
+
+                    if (notePropertyFile.Find(betweenNote))
                     {
-                        pathText.CreateNewDirectory(FileNoteNames.DirectoryName + i.ToString());
-                        pathText.CreateNewPath(FileNoteNames.FileTextName + i.ToString() + ".txt");
-                        pathProperty.CreateNewDirectory(FileNoteNames.DirectoryName + i.ToString());
-                        pathProperty.CreateNewPath(FileNoteNames.FilePropertyName + i.ToString() + ".txt");
-
-                        findNoteByID = new SelectNoteByID(pathProperty.PathFile, i);
-                        //notePropertyFile.Select(findNoteByID).ForEach(x => ListNotes.Add(x));
-
-                        betweenNote = new FileFindNotesBetween(Settings.Default.CounterNotes
-                             - counterNotesGroup - alsoShown - 1, Settings.Default.CounterNotes - alsoShown, pathProperty.PathFile);
-
-                        if (notePropertyFile.Find(betweenNote)) ;
-                        {
-                            findNoteByID.Select().ForEach(x => ListNotes.Add(x));
-                            ListRecords_Note.Push(CreateRecordNote(new Point(0, (i - 1) * recordNote_Height), noteTextFile.Read(pathText.PathFile), i));
-                        }
+                        findNoteByID.Select().ForEach(x => ListNotes.Add(x));
+                        ListRecords_Note.Add(CreateRecordNote(ListNotes[countNote].Date.Date, countNote));
                     }
                 }
+                alsoShown += counterNotesGroup;
                 AddNotesInGroupBox();
             }
         }
-        private Button CreateRecordNote(Point pt, string text, int countBtn)
+        private Button CreateRecordNote(/*Point pt*/ string text, int countBtn)
         {
             Button btn = new Button();
 
@@ -107,7 +97,6 @@ namespace Diary.Forms
             btn.Dock = DockStyle.Top;
             btn.TextAlign = ContentAlignment.TopLeft;
             btn.AutoSize = false;
-            btn.Location = pt;
             btn.Text = text;
             btn.Click += new EventHandler(this.BtnNote_click);
 
@@ -116,16 +105,17 @@ namespace Diary.Forms
 
         private void BtnNote_click(object sender, EventArgs e)
         {
-            textBox_noteText.Text = noteTextFile.Read( ListNotes[Convert.ToInt32((sender as Button).Name)].PathNote ) ;
+            textBox_noteText.Text = noteTextFile.Read(ListNotes[Convert.ToInt32((sender as Button).Name)].PathNote);
         }
 
         private void AddNotesInGroupBox()
         {
-            Stack<Button> tmp = ListRecords_Note;
-            foreach (var note in tmp)
+            ListRecords_Note.Reverse();
+            foreach (var item in ListRecords_Note)
             {
-                panel_recordNotes.Controls.Add(note);
+                panel_recordNotes.Controls.Add(item);
             }
+            ListRecords_Note.Reverse();
         }
 
         private void button_onMain_Click(object sender, EventArgs e)

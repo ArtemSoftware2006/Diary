@@ -26,7 +26,7 @@ namespace Diary.Data.Directory
         {
             int count = int.Parse(File.ReadAllText(FilePath).Split(new char[] { '*' })[0]);
 
-            return (StartNumber < count) && (StopNumber > count);
+            return (StartNumber <= count) && (StopNumber >= count);
         }
     }
 }
