@@ -1,4 +1,9 @@
-﻿using Diary.SQL;
+﻿using Diary.Data.Directory;
+using Diary.Data.Entity;
+using Diary.Data.User.FileUserDirectory;
+using Diary.Data.User.Tools;
+using Diary.Properties;
+using Diary.SQL;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Relational;
 using System;
@@ -15,13 +20,19 @@ namespace Diary.Forms
 {
     public partial class Form_entrance : Form
     {
-        private MySqlCommand cmd;
-        private SelectPerson selectUser;
-        private SelectLoginAndPsw selectloginAndPsd;
-        private DataTable table;
-        private MySqlDataAdapter adapter;
-        private MySqlDataReader reader;
         private bool IsMainClose = true;
+        private List<Users> listUsers;
+        //private MySqlCommand cmd;
+        //private SelectPerson selectUser;
+        //private SelectLoginAndPsw selectloginAndPsd;
+        //private DataTable table;
+        //private MySqlDataAdapter adapter;
+        //private MySqlDataReader reader;
+
+        private SelectUserByPath selectUserByPath;
+        private FileUserSaving fileUserSaving;
+        private PathUser pathUser;
+        private FindUserByLoginAndPwd findUserEntrance;
         public Form_entrance()
         {
             InitializeComponent();
@@ -29,31 +40,54 @@ namespace Diary.Forms
 
         private void button_entrance_Click(object sender, EventArgs e)
         {
-            DBConnector.Open();
+            //DBConnector.Open();
 
             if (textBox_loginInput.Text != "" && textBox_pswInput.Text != "")
             {
-                DBConnector.Open();
+                // DBConnector.Open();
 
-                selectloginAndPsd = new SelectLoginAndPsw(textBox_loginInput.Text, textBox_pswInput.Text);
-                cmd = new MySqlCommand(selectloginAndPsd.SqlString, DBConnector.connect);
+                //selectloginAndPsd = new SelectLoginAndPsw(textBox_loginInput.Text, textBox_pswInput.Text);
+                //cmd = new MySqlCommand(selectloginAndPsd.SqlString, DBConnector.connect);
 
-                reader = cmd.ExecuteReader();
+                //reader = cmd.ExecuteReader();
+                pathUser = new PathUser();
 
-                if (reader.Read())
+                for (int i = 0; i < Settings.Default.CounterUser; i++)
                 {
-                    reader.Close();
+                    
+                    pathUser.CreateNewDirectory(FileUsersNames.DirectoryName + i.ToString());
+                    pathUser.CreateNewPath(FileUsersNames.FileName + i.ToString());
 
-                    selectUser = new SelectPerson(textBox_loginInput.Text);
-                    table = new DataTable("Person");
+                    findUserEntrance = new FindUserByLoginAndPwd(pathUser.PathFile, textBox_loginInput.Text, textBox_pswInput.Text);
+                    selectUserByPath = new SelectUserByPath(pathUser.PathFile);
+                    fileUserSaving = new FileUserSaving(pathUser.PathFile);
 
-                    adapter = new MySqlDataAdapter(selectUser.SqlString, DBConnector.connect);
-                    adapter.Fill(table);
+                    if (fileUserSaving.Find(findUserEntrance))
+                    {
+                        listUsers = new List<Users>();
+                        listUsers = fileUserSaving.Select(selectUserByPath);
+                    }
+                }
+
+                if (listUsers.Count > 0)
+                {
+                    //reader.Close();
+
+                    //selectUser = new SelectPerson(textBox_loginInput.Text);
+                    //table = new DataTable("Person");
+
+                    //adapter = new MySqlDataAdapter(selectUser.SqlString, DBConnector.connect);
+                    //adapter.Fill(table);
                    
-                    Person.IdUser = Convert.ToInt32(table.Rows[0].ItemArray[0]);
-                    Person.Login = table.Rows[0].ItemArray[1].ToString();
-                    Person.Password = table.Rows[0].ItemArray[2].ToString();
-                    Person.Email = table.Rows[0].ItemArray[3].ToString();
+                    //Person.IdUser = Convert.ToInt32(table.Rows[0].ItemArray[0]);
+                    //Person.Login = table.Rows[0].ItemArray[1].ToString();
+                    //Person.Password = table.Rows[0].ItemArray[2].ToString();
+                    //Person.Email = table.Rows[0].ItemArray[3].ToString();
+
+                    Person.IdUser = listUsers[0].IdUser;
+                    Person.Login = listUsers[0].Login;
+                    Person.Password = listUsers[0].Password;
+                    Person.Email = listUsers[0].Email; 
 
                     Form_main.EnableMain(); 
                     this.Dispose();

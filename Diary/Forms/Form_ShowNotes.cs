@@ -71,10 +71,10 @@ namespace Diary.Forms
                 {
                     if (Settings.Default.CounterNotes - i > 0)
                     {
-                        pathText.CreateNewDirectory(FileNames.DirectoryName + i.ToString());
-                        pathText.CreateNewPath(FileNames.FileTextName + i.ToString() + ".txt");
-                        pathProperty.CreateNewDirectory(FileNames.DirectoryName + i.ToString());
-                        pathProperty.CreateNewPath(FileNames.FilePropertyName + i.ToString() + ".txt");
+                        pathText.CreateNewDirectory(FileNoteNames.DirectoryName + i.ToString());
+                        pathText.CreateNewPath(FileNoteNames.FileTextName + i.ToString() + ".txt");
+                        pathProperty.CreateNewDirectory(FileNoteNames.DirectoryName + i.ToString());
+                        pathProperty.CreateNewPath(FileNoteNames.FilePropertyName + i.ToString() + ".txt");
 
                         findNoteByID = new SelectNoteByID(pathProperty.PathFile, i);
                         //notePropertyFile.Select(findNoteByID).ForEach(x => ListNotes.Add(x));

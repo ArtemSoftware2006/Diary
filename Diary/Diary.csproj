@@ -118,6 +118,8 @@
     <Compile Include="Data\Services\MyPath.cs" />
     <Compile Include="Data\User\Tools\FindUserByEmail.cs" />
     <Compile Include="Data\User\Tools\FindUserByLogin.cs" />
+    <Compile Include="Data\User\Tools\FindUserByLoginAndPwd.cs" />
+    <Compile Include="Data\User\Tools\SelectUserByPath.cs" />
     <Compile Include="FileNoteNames.cs" />
     <Compile Include="FileUsersNames.cs" />
     <Compile Include="Forms\Form_showNotes.cs">
